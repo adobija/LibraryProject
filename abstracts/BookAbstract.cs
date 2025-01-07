@@ -26,16 +26,17 @@ namespace LibraryProject.abstracts
             }
         }
 
-        public void printDetailsOfBook() {
+        public virtual void printDetailsOfBook() {
 
 
             string refactoredISBN = refactorISBN();
 
             String output = $"The book called {Title} written by {Author} ({refactoredISBN})";
-            Console.WriteLine(output);
+
+            Console.Write(output);
         }
 
-        public string refactorISBN() { 
+        private string refactorISBN() { 
             long isbn = getISBN();
             
             string refactoredISBN = isbn.ToString();
@@ -49,7 +50,7 @@ namespace LibraryProject.abstracts
             string output = $"{fifthCluster}-{fourthCluster}-{thirdCluster}-{secondCluster}-{firstCluster}";
             return output;
         }
-        public long getISBN()
+        private long getISBN()
         {
             return this.ISBN;
         }
