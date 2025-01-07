@@ -16,5 +16,11 @@ namespace LibraryProject.classes
         {
 
         }
+
+        public override void printDetailsOfBook()
+        {
+            base.printDetailsOfBook();
+            Console.WriteLine(" - " + this.GetType().Name);
+        }
     }
 }
