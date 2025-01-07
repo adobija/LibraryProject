@@ -12,7 +12,7 @@ namespace LibraryProject.classes
 
         public MysteryBook() : base("N/A", "N/A", 9999999999999) { }
 
-        public MysteryBook(string title, string author, int isbn) : base(title, author, isbn)
+        public MysteryBook(string title, string author, long isbn) : base(title, author, isbn)
         {
 
         }

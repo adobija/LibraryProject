@@ -11,7 +11,7 @@ namespace LibraryProject.classes
     {
         public FantasyBook() : base("N/A", "N/A", 9999999999999) { }
 
-        public FantasyBook(string title, string author, int isbn) : base (title, author, isbn)
+        public FantasyBook(string title, string author, long isbn) : base (title, author, isbn)
         {
 
         }

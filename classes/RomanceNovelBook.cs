@@ -12,7 +12,7 @@ namespace LibraryProject.classes
 
         public RomanceNovelBook() : base("N/A", "N/A", 9999999999999) { }
 
-        public RomanceNovelBook(string title, string author, int isbn) : base(title, author, isbn)
+        public RomanceNovelBook(string title, string author, long isbn) : base(title, author, isbn)
         {
 
         }
