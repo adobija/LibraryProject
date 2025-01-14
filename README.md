@@ -17,3 +17,17 @@ Wymagania dotyczące projektu
  
 -Tworzenie grafiki bitmapowej z wykorzystaniem wybranej biblioteki oraz wykorzystanie jej do graficznej prezentacji wyników uprzednio opracowanych zapytań LINQ (Opcjonalne)
  
+
+ # Description 
+ Olek: Administrator tworzenie ksiazek, usuwanie ksiazek , Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku JSON ( login haslo)
+ Jakub: przegladac ksiazki, statystyki ksaizek, wypozyczac, zwracac, wyswietlanie dni ile ksiazka jest wypozyczona, - JK
+
+
+- bazy danych ksiazek jako osobny plik JSON, podział na kategorie, 
+- oparta na wzorcu projektowym Factory
+- Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku txt,1 admin (login haslo)
+- Administrator tworzenie ksiazek, usuwanie ksiazek (-Olek), zarzadzanie userami, statystyki ksiazek [ Zapisuj dane o najczęściej wypożyczanych książkach i prezentuj je za pomocą grafiki bitmapowej (np. wykres kołowy lub słupkowy).  ] , Śledzenie historii wypożyczeń, 
+- user - przegladac ksiazki, statystyki ksaizek, wypozyczac, zwracac, wyswietlanie dni ile ksiazka jest wypozyczona, - JK
+- zapis i odczyt danych o ksiazkach przechowywanych w JSON 
+- 
+
