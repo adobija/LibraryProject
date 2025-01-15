@@ -19,8 +19,17 @@ Wymagania dotyczące projektu
  
 
  # Description 
- Olek: Administrator tworzenie ksiazek, usuwanie ksiazek , Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku JSON ( login haslo)
- Jakub: przegladac ksiazki, statystyki ksaizek, wypozyczac, zwracac, wyswietlanie dni ile ksiazka jest wypozyczona, - JK
+ Olek: 
+ Administrator tworzenie ksiazek, 
+ usuwanie ksiazek,
+ Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)
+
+ Jakub: 
+ przegladac ksiazki, 
+ statystyki ksaizek, 
+ wypozyczac, 
+ zwracac, 
+ wyswietlanie dni ile ksiazka jest wypozyczona
 
 
 - bazy danych ksiazek jako osobny plik JSON, podział na kategorie, 
