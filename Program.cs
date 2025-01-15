@@ -1,4 +1,5 @@
 ﻿using LibraryProject.classes;
+using LibraryProject.controllers;
 
 namespace LibraryProject
 {
@@ -7,13 +8,22 @@ namespace LibraryProject
         static void Main(string[] args)
         {
 
-            FantasyBook wiedzmin = new FantasyBook();
+            //FantasyBook wiedzmin = new FantasyBook();
 
-            wiedzmin.printDetailsOfBook();
+            //wiedzmin.printDetailsOfBook();
 
-            RomanceNovelBook nudy = new RomanceNovelBook("Jakis tytul", "autor", 1235438370384);
 
-            nudy.printDetailsOfBook();
+            //RomanceNovelBook nudy = new RomanceNovelBook("Jakis tytul", "autor", 1235438370384);
+
+            //nudy.printDetailsOfBook();
+
+            UserController userController = new UserController();
+
+            string username = "Admin";
+            string password = "P@$$w0rd";
+
+            userController.Register(username, password);
+
 
         }
     }
