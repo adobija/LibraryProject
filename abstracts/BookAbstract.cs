@@ -12,8 +12,10 @@ namespace LibraryProject.abstracts
         private string Title;
         private string Author;
         private long ISBN;
+        private bool IsAvailable;
+        private string Category;
 
-        protected BookAbstract(string title, string author, long isbn)
+        protected BookAbstract(string title, string author, long isbn, string Category)
         {
             this.Title = title;
             this.Author = author;
@@ -24,6 +26,9 @@ namespace LibraryProject.abstracts
             else {
                 this.ISBN = isbn;
             }
+
+            this.IsAvailable = true;
+            this.Category = Category;
         }
 
         public virtual void printDetailsOfBook() {

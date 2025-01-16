@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using BCrypt.Net;
+using LibraryProject.classes;
 using LibraryProject.controllers;
 using LibraryProject.exceptions;
 using Newtonsoft.Json;
@@ -17,6 +18,8 @@ namespace LibraryProject.abstracts
         private string userName { get; set; }
         private string password { get; set; }
         private int userId { get; set; }
+
+        public List<BorrowedBook> BorrowedBooks { get; set; }
 
         public UserAbstract(string userName, string password) { 
         
@@ -51,6 +54,7 @@ namespace LibraryProject.abstracts
             this.userName = userName;
             this.password = password;
             this.userId=id;
+            this.BorrowedBooks = new List<BorrowedBook>();
         }
 
         public override string ToString()
