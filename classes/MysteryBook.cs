@@ -10,9 +10,9 @@ namespace LibraryProject.classes
     internal class MysteryBook : BookAbstract
     {
 
-        public MysteryBook() : base("N/A", "N/A", 9999999999999) { }
+        public MysteryBook() : base("N/A", "N/A", 9999999999999, "Mystery") { }
 
-        public MysteryBook(string title, string author, long isbn) : base(title, author, isbn)
+        public MysteryBook(string title, string author, long isbn) : base(title, author, isbn, "Mystery")
         {
 
         }

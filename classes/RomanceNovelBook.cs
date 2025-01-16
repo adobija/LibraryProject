@@ -10,9 +10,9 @@ namespace LibraryProject.classes
     internal class RomanceNovelBook : BookAbstract
     {
 
-        public RomanceNovelBook() : base("N/A", "N/A", 9999999999999) { }
+        public RomanceNovelBook() : base("N/A", "N/A", 9999999999999, "Romance") { }
 
-        public RomanceNovelBook(string title, string author, long isbn) : base(title, author, isbn)
+        public RomanceNovelBook(string title, string author, long isbn) : base(title, author, isbn, "Romance")
         {
 
         }
