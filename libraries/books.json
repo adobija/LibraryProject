@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Title": "W�adca Pier�cieni",
+    "Author": "J.R.R. Tolkien",
+    "Category": "Fantasy",
+    "IsAvailable": true
+  },
+  {
+    "Id": 2,
+    "Title": "Hobbit",
+    "Author": "J.R.R. Tolkien",
+    "Category": "Fantasy",
+    "IsAvailable": true
+  },
+  {
+    "Id": 3,
+    "Title": "Czysty kod",
+    "Author": "Robert C. Martin",
+    "Category": "Informatyka",
+    "IsAvailable": true
+  }
+]
