@@ -7,13 +7,13 @@ using LibraryProject.exceptions;
 
 namespace LibraryProject.abstracts
 {
-    internal abstract class BookAbstract
+    public abstract class BookAbstract
     {
-        private string Title;
-        private string Author;
-        private long ISBN;
-        private bool IsAvailable;
-        private string Category;
+        public required string Title {  get; set; } 
+        public required string Author { get; set; } 
+        public long ISBN { get; set; }
+        public bool IsAvailable { get; set; }
+        public required string Category { get; set; } 
 
         protected BookAbstract(string title, string author, long isbn, string Category)
         {
@@ -29,6 +29,14 @@ namespace LibraryProject.abstracts
 
             this.IsAvailable = true;
             this.Category = Category;
+        }
+        public BookAbstract(string title, string author, long iSBN, bool isAvailable, string category)
+        {
+            Title = title;
+            Author = author;
+            ISBN = iSBN;
+            IsAvailable = isAvailable;
+            Category = category;
         }
 
         public virtual void printDetailsOfBook() {

@@ -47,7 +47,7 @@ namespace LibraryProject.abstracts
 
             this.userName = validateUsername(userName);
 
-            this.password = BCrypt.Net.BCrypt.HashPassword(password, 10);
+            this.password = BCrypt.Net.BCrypt.HashPassword(password, 10); 
         }
 
         protected UserAbstract(string userName, string password, int id) {

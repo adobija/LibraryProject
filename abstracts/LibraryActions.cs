@@ -17,12 +17,11 @@ namespace LibraryProject.classes;
 public static class LibraryActions
 {
 
-// do testowania zczytywania danych z pliku JSON
-
-    public static async Task<List<Book>> LoadBooksAsync()
+    // do testowania zczytywania danych z pliku JSON
+    public static async Task<List<DataBaseBook>> LoadBooksAsync()
     {
         // Zmieniamy œcie¿kê pliku na odpowiedni¹ dla lokalizacji w katalogu projektu
-        string fullPath = Path.Combine("C:", "Users", "kruzl", "Desktop", "Github", "LibraryProject", "classes", "books.json");
+        string fullPath = "../../../libraries/books.json";
 
         // Diagnostyka œcie¿ki pliku
         //Console.WriteLine($"Œcie¿ka do pliku books.json: {fullPath}");
@@ -30,7 +29,7 @@ public static class LibraryActions
         if (!File.Exists(fullPath))
         {
             Console.WriteLine("Plik books.json nie istnieje w podanej œcie¿ce.");
-            return new List<Book>(); // Zwracamy pust¹ listê, gdy plik nie istnieje
+            return new List<DataBaseBook>(); // Zwracamy pust¹ listê, gdy plik nie istnieje
         }
 
         try
@@ -42,12 +41,12 @@ public static class LibraryActions
             //Console.WriteLine($"Zawartoœæ pliku JSON: {json}");
 
             // Deserializacja JSON do listy ksi¹¿ek
-            var books = JsonSerializer.Deserialize<List<Book>>(json);
+            var books = JsonSerializer.Deserialize<List<DataBaseBook>>(json);
 
             if (books == null || books.Count == 0)
             {
                 Console.WriteLine("Plik books.json jest pusty lub zawiera nieprawid³owe dane.");
-                return new List<Book>();
+                return new List<DataBaseBook>();
             }
 
             return books;
@@ -56,7 +55,7 @@ public static class LibraryActions
         {
             // Obs³uga b³êdów
             Console.WriteLine($"B³¹d podczas wczytywania ksi¹¿ek: {ex.Message}");
-            return new List<Book>();
+            return new List<DataBaseBook>();
         }
     }
 
@@ -101,7 +100,7 @@ public static class LibraryActions
             foreach (var book in filteredBooks)
             {
                 string availability = book.IsAvailable ? "Dostêpna" : "Wypo¿yczona";
-                Console.WriteLine($"ID: {book.Id}, Tytu³: {book.Title}, Autor: {book.Author}, Dostêpnoœæ: {availability}");
+                Console.WriteLine($"ID: {book.ISBN}, Tytu³: {book.Title}, Autor: {book.Author}, Dostêpnoœæ: {availability}");
             }
         }
         else
@@ -110,31 +109,6 @@ public static class LibraryActions
         }
     }
 
-
-
-
-    // Wypo¿yczanie ksi¹¿ki
-    public static async Task BorrowBookAsync(int userId, int bookId)
-    {
-        var users = await LibrarySystem.LoadUsersAsync();
-        var books = await LibrarySystem.LoadBooksAsync();
-
-        var user = users.FirstOrDefault(u => u.UserId == userId);
-        var book = books.FirstOrDefault(b => b.Id == bookId && b.IsAvailable);
-
-        if (user != null && book != null)
-        {
-            book.IsAvailable = false;
-            user.BorrowedBooks.Add(new BorrowedBook { BookId = bookId, BorrowDate = DateTime.Now });
-            await LibrarySystem.SaveBooksAsync(books);
-            await LibrarySystem.SaveUsersAsync(users);
-            Console.WriteLine($"U¿ytkownik {user.Name} wypo¿yczy³ ksi¹¿kê: {book.Title}");
-        }
-        else
-        {
-            Console.WriteLine("Ksi¹¿ka niedostêpna lub u¿ytkownik nie znaleziony.");
-        }
-    }
 
 
     // Wypo¿yczanie ksi¹¿ki z wyborem kategorii i ID ksi¹¿ki
@@ -156,45 +130,152 @@ public static class LibraryActions
             categoryChoice > 0 && categoryChoice <= categories.Count)
         {
             string selectedCategory = categories[categoryChoice - 1];
-            var filteredBooks = books.Where(b => b.Category == selectedCategory).ToList();
 
-            Console.WriteLine($"Ksi¹¿ki w kategorii: {selectedCategory}");
-            foreach (var book in filteredBooks)
+            // Filtruj ksi¹¿ki po kategorii i dostêpnoœci
+            var availableBooks = books
+                .Where(b => b.Category == selectedCategory && b.IsAvailable)
+                .ToList();
+
+            if (availableBooks.Any())
             {
-                string availability = book.IsAvailable ? "Dostêpna" : "Wypo¿yczona";
-                Console.WriteLine($"ID: {book.Id}, Tytu³: {book.Title}, Autor: {book.Author}, Dostêpnoœæ: {availability}");
-            }
-
-            Console.Write("Podaj ID ksi¹¿ki, któr¹ chcesz wypo¿yczyæ: ");
-            if (int.TryParse(Console.ReadLine(), out int bookId))
-            {
-                var book = filteredBooks.FirstOrDefault(b => b.Id == bookId);
-
-                if (book != null)
+                Console.WriteLine($"Dostêpne ksi¹¿ki w kategorii: {selectedCategory}");
+                foreach (var book in availableBooks)
                 {
-                    if (book.IsAvailable)
+                    Console.WriteLine($"Tytu³: {book.Title}, Autor: {book.Author}");
+                }
+
+                string title = "";
+                string author = "";
+                DataBaseBook bookToReserve = null;
+
+                // Pêtla dla tytu³u ksi¹¿ki
+                while (bookToReserve == null)
+                {
+                    Console.Write("Podaj tytu³ ksi¹¿ki, któr¹ chcesz zarezerwowaæ: ");
+                    title = Console.ReadLine();
+
+                    // ZnajdŸ ksi¹¿kê na podstawie tytu³u
+                    bookToReserve = availableBooks.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+
+                    if (bookToReserve == null)
+                    {
+                        Console.WriteLine("Nie znaleziono ksi¹¿ki o podanym tytule. Spróbuj ponownie.");
+                    }
+                }
+
+                // Pêtla dla autora ksi¹¿ki
+                while (bookToReserve != null)
+                {
+                    Console.Write("Podaj autora ksi¹¿ki: ");
+                    author = Console.ReadLine();
+
+                    // SprawdŸ, czy autor zgadza siê z ksi¹¿k¹
+                    if (bookToReserve.Author.Equals(author, StringComparison.OrdinalIgnoreCase))
                     {
                         // Oznaczenie ksi¹¿ki jako niedostêpnej
-                        book.IsAvailable = false;
+                        bookToReserve.IsAvailable = false;
 
                         // Zapisanie zmian
                         await LibrarySystem.SaveBooksAsync(books);
 
-                        Console.WriteLine($"Ksi¹¿ka '{book.Title}' zosta³a wypo¿yczona.");
+                        Console.WriteLine($"Ksi¹¿ka '{bookToReserve.Title}' zosta³a zarezerwowana.");
+                        break;
                     }
                     else
                     {
-                        Console.WriteLine("Wybrana ksi¹¿ka jest ju¿ wypo¿yczona.");
+                        Console.WriteLine("Autor ksi¹¿ki jest nieprawid³owy. Spróbuj ponownie.");
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Nie znaleziono ksi¹¿ki o podanym ID.");
                 }
             }
             else
             {
-                Console.WriteLine("Nieprawid³owe ID ksi¹¿ki.");
+                Console.WriteLine($"Brak dostêpnych ksi¹¿ek w kategorii: {selectedCategory}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Niepoprawny wybór kategorii.");
+        }
+    }
+
+    public static async Task ReturnBookAsync()
+    {
+        var books = await LibrarySystem.LoadBooksAsync();
+
+        // Pobierz unikalne kategorie ksi¹¿ek
+        var categories = books.Select(b => b.Category).Distinct().ToList();
+
+        Console.WriteLine("Wybierz kategoriê ksi¹¿ek:");
+        for (int i = 0; i < categories.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {categories[i]}");
+        }
+
+        Console.Write("Podaj numer kategorii: ");
+        if (int.TryParse(Console.ReadLine(), out int categoryChoice) &&
+            categoryChoice > 0 && categoryChoice <= categories.Count)
+        {
+            string selectedCategory = categories[categoryChoice - 1];
+
+            // Filtruj ksi¹¿ki po kategorii i wypo¿yczonych
+            var borrowedBooks = books
+                .Where(b => b.Category == selectedCategory && !b.IsAvailable)
+                .ToList();
+
+            if (borrowedBooks.Any())
+            {
+                Console.WriteLine($"Wypo¿yczone ksi¹¿ki w kategorii: {selectedCategory}");
+                foreach (var book in borrowedBooks)
+                {
+                    Console.WriteLine($"Tytu³: {book.Title}, Autor: {book.Author}");
+                }
+
+                string title = "";
+                string author = "";
+                DataBaseBook bookToReturn = null;
+
+                // Pêtla dla tytu³u ksi¹¿ki
+                while (bookToReturn == null)
+                {
+                    Console.Write("Podaj tytu³ ksi¹¿ki, któr¹ chcesz zwróciæ: ");
+                    title = Console.ReadLine();
+
+                    // ZnajdŸ ksi¹¿kê na podstawie tytu³u
+                    bookToReturn = borrowedBooks.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+
+                    if (bookToReturn == null)
+                    {
+                        Console.WriteLine("Nie znaleziono ksi¹¿ki o podanym tytule. Spróbuj ponownie.");
+                    }
+                }
+
+                // Pêtla dla autora ksi¹¿ki
+                while (bookToReturn != null)
+                {
+                    Console.Write("Podaj autora ksi¹¿ki: ");
+                    author = Console.ReadLine();
+
+                    // SprawdŸ, czy autor zgadza siê z ksi¹¿k¹
+                    if (bookToReturn.Author.Equals(author, StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Oznaczenie ksi¹¿ki jako dostêpnej
+                        bookToReturn.IsAvailable = true;
+
+                        // Zapisanie zmian
+                        await LibrarySystem.SaveBooksAsync(books);
+
+                        Console.WriteLine($"Ksi¹¿ka '{bookToReturn.Title}' zosta³a zwrócona i jest teraz dostêpna do wypo¿yczenia.");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Autor ksi¹¿ki jest nieprawid³owy. Spróbuj ponownie.");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Brak wypo¿yczonych ksi¹¿ek w kategorii: {selectedCategory}");
             }
         }
         else
@@ -205,54 +286,7 @@ public static class LibraryActions
 
 
 
+}
 
 
 
-    // Zwracanie ksi¹¿ki
-    public static async Task ReturnBookAsync(int userId, int bookId)
-    {
-        var users = await LibrarySystem.LoadUsersAsync();
-        var books = await LibrarySystem.LoadBooksAsync();
-
-        var user = users.FirstOrDefault(u => u.UserId == userId);
-        var book = books.FirstOrDefault(b => b.Id == bookId);
-
-        if (user != null && book != null)
-        {
-            var borrowedBook = user.BorrowedBooks.FirstOrDefault(b => b.BookId == bookId);
-            if (borrowedBook != null)
-            {
-                book.IsAvailable = true;
-                user.BorrowedBooks.Remove(borrowedBook);
-                await LibrarySystem.SaveBooksAsync(books);
-                await LibrarySystem.SaveUsersAsync(users);
-                Console.WriteLine($"U¿ytkownik {user.Name} zwróci³ ksi¹¿kê: {book.Title}");
-            }
-            else
-            {
-                Console.WriteLine("U¿ytkownik nie wypo¿yczy³ tej ksi¹¿ki.");
-            }
-        }
-    }
-
-    // Panel z czasem wypo¿yczenia ksi¹¿ki
-    public static async Task DisplayBorrowPanelAsync()
-    {
-        var users = await LibrarySystem.LoadUsersAsync();
-        var books = await LibrarySystem.LoadBooksAsync();
-
-        foreach (var user in users)
-        {
-            Console.WriteLine($"\nU¿ytkownik: {user.Name}");
-            foreach (var borrowedBook in user.BorrowedBooks)
-            {
-                var book = books.FirstOrDefault(b => b.Id == borrowedBook.BookId);
-                if (book != null)
-                {
-                    var daysBorrowed = (DateTime.Now - borrowedBook.BorrowDate).Days;
-                    Console.WriteLine($"ID: {book.Id}, Tytu³: {book.Title}, Autor: {book.Author}, Kategoria: {book.Category}, Dni wypo¿yczenia: {daysBorrowed}");
-                }
-            }
-        }
-    }
-};

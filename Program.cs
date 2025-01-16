@@ -17,7 +17,7 @@ namespace LibraryProject
             //FantasyBook wiedzmin = new FantasyBook();
 
 
-            FantasyBook wiedzmin = new FantasyBook();
+            //FantasyBook wiedzmin = new FantasyBook();
 
             //wiedzmin.printDetailsOfBook();
 
@@ -26,12 +26,12 @@ namespace LibraryProject
 
             //nudy.printDetailsOfBook();
 
-            UserController userController = new UserController();
+            //UserController userController = new UserController();
 
-            string username = "Admin";
-            string password = "P@$$w0rd";
+            //string username = "Admin";
+            //string password = "P@$$w0rd";
 
-            userController.Register(username, password);
+            //userController.Register(username, password);
 
 
 
@@ -88,43 +88,26 @@ namespace LibraryProject
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         await LibraryActions.BrowseBooksAsync();
                         break;
 
 
                       case "2":
 
-                           Console.Write("Podaj ID książki, którą chcesz wypożyczyć: ");
-                           await LibraryActions.BorrowBookAsync
+                        Console.Write("Podaj nazwe i autora książki, którą chcesz wypożyczyć: ");
+                        await LibraryActions.BorrowBookAsync();
                         break;
-
 
                     case "3":
-                        Console.Write("\nPodaj swoje ID użytkownika: ");
-                        if (int.TryParse(Console.ReadLine(), out int returnUserId))
-                        {
-                            Console.Write("Podaj ID książki, którą chcesz zwrócić: ");
-                            if (int.TryParse(Console.ReadLine(), out int returnBookId))
-                            {
-                                await LibraryActions.ReturnBookAsync(returnUserId, returnBookId);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Nieprawidłowe ID książki.");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Nieprawidłowe ID użytkownika.");
-                        }
+
+                        Console.Write("Podaj autora i nazwe książki, którą chcesz zwrócić: ");
+                        await LibraryActions.ReturnBookAsync();
                         break;
+
+
 
                     case "4":
-                        Console.WriteLine("\nWyświetlanie panelu wypożyczeń...");
-                        await LibraryActions.DisplayBorrowPanelAsync();
-                        break;
-
-                    case "5":
                         Console.WriteLine("Dziękujemy za skorzystanie z systemu biblioteki. Do widzenia!");
                         exit = true;
                         break;
