@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "aqm2m1fSDWA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Endzio\\Desktop\\github\\LibraryProject\\LibraryProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Endzio\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,6 @@
+C:\Users\Endzio\Desktop\github\LibraryProject\obj\Debug\net8.0\LibraryProject.csproj.AssemblyReference.cache
+C:\Users\Endzio\Desktop\github\LibraryProject\obj\Debug\net8.0\LibraryProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Endzio\Desktop\github\LibraryProject\obj\Debug\net8.0\LibraryProject.AssemblyInfoInputs.cache
+C:\Users\Endzio\Desktop\github\LibraryProject\obj\Debug\net8.0\LibraryProject.AssemblyInfo.cs
+C:\Users\Endzio\Desktop\github\LibraryProject\obj\Debug\net8.0\LibraryProject.csproj.CoreCompileInputs.cache
+C:\Users\Endzio\Desktop\github\LibraryProject\obj\Debug\net8.0\LibraryProject.sourcelink.json
