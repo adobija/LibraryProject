@@ -7,19 +7,20 @@ using LibraryProject.classes;
 using LibraryProject.exceptions;
 using LibraryProject.interfaces.implementations;
 using LibraryProject.libraries;
+using System.Text.Json;
 
 namespace LibraryProject.controllers
 {
     internal class UserController : UserRegisterImpl
     {
-
+        private static string pathToUsersDB = "../../../libraries/UserDB.json";
         public void Register(string userName, string password) {
             RegisterUser(userName, password);
         }
 
         public static List<User> FetchDbOfUsers()
         {
-            List<User> users = RefactorUserDb.FetchUsers();
+            List<User> users = FetchUsers();
             return users;
         }
 
@@ -41,6 +42,25 @@ namespace LibraryProject.controllers
                 throw new UserAlreadyExistException();
             }
             return userNameAlredyExist;
+        }
+
+        public async static Task<List<User>> FetchUsers()
+        {
+            List<User> users = new List<User>();
+            try
+            {
+                    string json = await File.ReadAllTextAsync(pathToUsersDB); // Wczytanie zawartości pliku
+
+                    users =  JsonSerializer.Deserialize<List<User>>(json);
+
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("UserController fail: UserDB.json file not found");
+            }
+
+            return users;
+
         }
     }
 }
