@@ -31,7 +31,13 @@ namespace LibraryProject
             {
                 loggedUser = await UserLoginImpl.Login();
             }
-            catch (InvalidPasswordException e) {
+            catch (InvalidPasswordException e)
+            {
+                Console.WriteLine(e.Message);
+
+                Environment.Exit(1);
+            }
+            catch (UserDoesNotExistException e) { 
                 Console.WriteLine(e.Message);
 
                 Environment.Exit(1);
