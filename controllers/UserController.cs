@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using LibraryProject.classes;
 using LibraryProject.exceptions;
 using LibraryProject.interfaces.implementations;
-using LibraryProject.libraries;
 using System.Text.Json;
 
 namespace LibraryProject.controllers
@@ -18,16 +17,10 @@ namespace LibraryProject.controllers
             RegisterUser(userName, password);
         }
 
-        public static List<User> FetchDbOfUsers()
-        {
-            List<User> users = FetchUsers();
-            return users;
-        }
-
         public static bool CheckUsername(string userName)
         {
 
-            List<User> listOfUsers = UserController.FetchDbOfUsers();
+            List<User> listOfUsers = new List<User>(); //UserController.FetchDbOfUsers();
             bool userNameAlredyExist = false;
             foreach (User user in listOfUsers)
             {
@@ -44,14 +37,20 @@ namespace LibraryProject.controllers
             return userNameAlredyExist;
         }
 
-        public async static Task<List<User>> FetchUsers()
+        public async Task<List<User>> FetchUsers()
         {
-            List<User> users = new List<User>();
+            
             try
             {
-                    string json = await File.ReadAllTextAsync(pathToUsersDB); // Wczytanie zawartości pliku
+                string json = await File.ReadAllTextAsync(pathToUsersDB); // Wczytanie zawartości pliku
+                
+                var users = JsonSerializer.Deserialize<List<User>>(json, new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true});
 
-                    users =  JsonSerializer.Deserialize<List<User>>(json);
+                foreach (User user in users) {
+                    Console.WriteLine(user.getUserName());
+                }
+
+                return users;
 
             }
             catch (FileNotFoundException e)
@@ -59,7 +58,8 @@ namespace LibraryProject.controllers
                 Console.WriteLine("UserController fail: UserDB.json file not found");
             }
 
-            return users;
+            return new List<User>();
+
 
         }
     }
