@@ -17,38 +17,16 @@ namespace LibraryProject.controllers
             RegisterUser(userName, password);
         }
 
-        public static bool CheckUsername(string userName)
-        {
+        
 
-            List<User> listOfUsers = new List<User>(); //UserController.FetchDbOfUsers();
-            bool userNameAlredyExist = false;
-            foreach (User user in listOfUsers)
-            {
-                if (user.getUserName().ToUpper().Equals(userName.ToUpper()))
-                {
-                    userNameAlredyExist = true;
-                    break;
-                }
-            }
-            if (userNameAlredyExist)
-            {
-                throw new UserAlreadyExistException();
-            }
-            return userNameAlredyExist;
-        }
-
-        public async Task<List<User>> FetchUsers()
+        public static async Task<List<User>> FetchUsers()
         {
             
             try
             {
-                string json = await File.ReadAllTextAsync(pathToUsersDB); // Wczytanie zawartości pliku
+                string json = File.ReadAllText(pathToUsersDB); // Wczytanie zawartości pliku
                 
                 var users = JsonSerializer.Deserialize<List<User>>(json, new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true});
-
-                foreach (User user in users) {
-                    Console.WriteLine(user.getUserName());
-                }
 
                 return users;
 
