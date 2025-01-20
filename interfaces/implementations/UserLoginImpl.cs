@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LibraryProject.classes;
 using LibraryProject.controllers;
+using LibraryProject.exceptions;
 
 namespace LibraryProject.interfaces.implementations
 {
@@ -47,8 +48,8 @@ namespace LibraryProject.interfaces.implementations
                 }
 
             }
-            Console.WriteLine("Incorrect password... Exiting the application...");
-            return null;
+            throw new InvalidPasswordException();
+           
 
 
         }
