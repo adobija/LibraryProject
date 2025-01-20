@@ -40,3 +40,4 @@ Wymagania dotyczące projektu
 - zapis i odczyt danych o ksiazkach przechowywanych w JSON 
 - 
 
+# Made by Jakub Kruźlak && Aleksander Dobija
