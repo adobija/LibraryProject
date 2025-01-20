@@ -15,9 +15,9 @@ namespace LibraryProject.abstracts
 {
     internal abstract class UserAbstract
     {
-        public string userName { get; private set; }
-        public string password { get; private set; }
-        public int userId { get; private set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        public int userId { get; set; }
 
         public List<BorrowedBook> BorrowedBooks { get; set; }
 
@@ -60,10 +60,9 @@ namespace LibraryProject.abstracts
             this.BorrowedBooks = new List<BorrowedBook>();
         }
 
-        //public override string ToString()
-        //{
-        //    return $"{this.userName},{this.password},{this.userId}";
-        //}
+        //Constructor for deserialization
+        public UserAbstract() { }
+
 
         public string getUserName() {
             return userName;

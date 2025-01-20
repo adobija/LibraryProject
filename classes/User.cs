@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using LibraryProject.abstracts;
 using LibraryProject.controllers;
@@ -14,9 +15,12 @@ namespace LibraryProject.classes
         public User(string userName, string password) : base(userName, password) {
         }
 
+        
         public User(string userName, string password, int id) : base(userName, password, id)
         {
         }
+
+        public User() { }
 
 
     }
