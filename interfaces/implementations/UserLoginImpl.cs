@@ -21,7 +21,9 @@ namespace LibraryProject.interfaces.implementations
             string username = Console.ReadLine().ToUpper();
 
             User foundUser = await UserController.getUserAsync(username);
-
+            if (foundUser == null) {
+                throw new UserDoesNotExistException();
+            }
             Console.WriteLine("Input your password");
 
             string inputPassword = Console.ReadLine();
