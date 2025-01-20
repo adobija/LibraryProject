@@ -15,9 +15,9 @@ namespace LibraryProject.abstracts
 {
     internal abstract class UserAbstract
     {
-        private string userName { get; set; }
-        private string password { get; set; }
-        private int userId { get; set; }
+        public string userName { get; private set; }
+        public string password { get; private set; }
+        public int userId { get; private set; }
 
         public List<BorrowedBook> BorrowedBooks { get; set; }
 
@@ -45,9 +45,12 @@ namespace LibraryProject.abstracts
             }
 
 
-            this.userName = validateUsername(userName);
+            //this.userName = validateUsername(userName);
+            this.userName = userName;
 
             this.password = BCrypt.Net.BCrypt.HashPassword(password, 10); 
+
+            this.BorrowedBooks = new List<BorrowedBook>();
         }
 
         protected UserAbstract(string userName, string password, int id) {
@@ -57,10 +60,10 @@ namespace LibraryProject.abstracts
             this.BorrowedBooks = new List<BorrowedBook>();
         }
 
-        public override string ToString()
-        {
-            return $"{this.userName},{this.password},{this.userId}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{this.userName},{this.password},{this.userId}";
+        //}
 
         public string getUserName() {
             return userName;
