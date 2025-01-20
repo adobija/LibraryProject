@@ -15,18 +15,6 @@ namespace LibraryProject
         {
 
 
-            //FantasyBook wiedzmin = new FantasyBook();
-
-
-            //FantasyBook wiedzmin = new FantasyBook();
-
-            //wiedzmin.printDetailsOfBook();
-
-
-            //RomanceNovelBook nudy = new RomanceNovelBook("Jakis tytul", "autor", 1235438370384);
-
-            //nudy.printDetailsOfBook();
-
             UserRegisterImpl.StartRegister();
 
             //string json = JsonSerializer.Serialize(user, new JsonSerializerOptions { WriteIndented = true }); // Serializacja do JSON
