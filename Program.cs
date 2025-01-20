@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using LibraryProject.classes;
 using LibraryProject.interfaces.implementations;
+using LibraryProject.exceptions;
 
 
 namespace LibraryProject
@@ -25,7 +26,17 @@ namespace LibraryProject
              Pawel | test123
              
              */
-            User loggedUser = await UserLoginImpl.Login();
+            User loggedUser = null;
+            try
+            {
+                loggedUser = await UserLoginImpl.Login();
+            }
+            catch (InvalidPasswordException e) {
+                Console.WriteLine(e.Message);
+
+                Environment.Exit(1);
+            }
+            
 
             Console.WriteLine($"Logged as {loggedUser.getUserName()}");
 
