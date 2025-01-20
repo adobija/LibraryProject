@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using System.Text.Json;
 using LibraryProject.classes;
+using LibraryProject.interfaces.implementations;
 
 
 namespace LibraryProject
@@ -26,12 +27,8 @@ namespace LibraryProject
 
             //nudy.printDetailsOfBook();
 
-            UserController userController = new UserController();
+            UserRegisterImpl.StartRegister();
 
-            string username = "Admin";
-            string password = "P@$$w0rd";
-
-            userController.RegisterUser(username, password);
             //string json = JsonSerializer.Serialize(user, new JsonSerializerOptions { WriteIndented = true }); // Serializacja do JSON
             //Console.WriteLine(json);
             //await File.WriteAllTextAsync(UserDB, json);
