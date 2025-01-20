@@ -13,9 +13,23 @@ namespace LibraryProject
     {
         static async Task Main(string[] args)
         {
+            /*
+             IMPORTANT 
+            
+             Username | Password
 
+             Admin | P@$$w0rd
 
-            UserRegisterImpl.StartRegister();
+             Olek | P@$$w0rd
+
+             Pawel | test123
+             
+             */
+            User loggedUser = await UserLoginImpl.Login();
+
+            Console.WriteLine($"Logged as {loggedUser.getUserName()}");
+
+            //UserRegisterImpl.StartRegister();
 
             //string json = JsonSerializer.Serialize(user, new JsonSerializerOptions { WriteIndented = true }); // Serializacja do JSON
             //Console.WriteLine(json);
