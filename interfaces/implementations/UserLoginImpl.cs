@@ -23,9 +23,9 @@ namespace LibraryProject.interfaces.implementations
 
             Console.WriteLine("Input your password");
 
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(Console.ReadLine(), 10);
+            string inputPassword = Console.ReadLine();
 
-            if (BCrypt.Net.BCrypt.Verify(hashedPassword, foundUser.getPassword()))
+            if (BCrypt.Net.BCrypt.Verify(inputPassword, foundUser.getPassword()))
             {
                 Console.WriteLine($"Welcome {foundUser.getUserName()}");
                 return foundUser;
@@ -35,9 +35,9 @@ namespace LibraryProject.interfaces.implementations
             {
                 Console.WriteLine("Wrong password! Try Again");
 
-                hashedPassword = BCrypt.Net.BCrypt.HashPassword(Console.ReadLine(), 10);
+                inputPassword = Console.ReadLine();
 
-                if (BCrypt.Net.BCrypt.Verify(hashedPassword, foundUser.getPassword()))
+                if (BCrypt.Net.BCrypt.Verify(inputPassword, foundUser.getPassword()))
                 {
                     Console.WriteLine($"Welcome {foundUser.getUserName()}");
                     return foundUser;
