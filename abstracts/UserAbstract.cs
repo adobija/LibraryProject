@@ -46,7 +46,7 @@ namespace LibraryProject.abstracts
 
 
             //this.userName = validateUsername(userName);
-            this.userName = userName;
+            this.userName = userName.ToUpper();
 
             this.password = BCrypt.Net.BCrypt.HashPassword(password, 10); 
 
