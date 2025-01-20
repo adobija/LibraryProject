@@ -40,5 +40,19 @@ namespace LibraryProject.controllers
 
 
         }
+
+        public static async Task<User> getUserAsync(string username) { 
+            List<User> users = await FetchUsers();
+
+            User foundUser = null;
+
+            foreach (User x in users)
+            {
+                if (x.getUserName().ToUpper() == username.ToUpper()) { 
+                foundUser = x; break;
+                }
+            }
+            return foundUser;
+        }
     }
 }
