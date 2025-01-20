@@ -77,28 +77,5 @@ namespace LibraryProject.abstracts
         {
             return userId;
         }
-
-        private string validateUsername(string userName) {
-
-            bool flag = true;
-            string validUserName = userName;
-            do
-            {
-                try
-                {
-                    if (!UserController.CheckUsername(validUserName))
-                    {
-                        flag = false;
-                    }
-                }
-                catch (UserAlreadyExistException e)
-                {
-                    Console.Write($"{e.Message} Please input not used username \n");
-                    validUserName = Console.ReadLine();
-                }
-            } while (flag);
-
-            return validUserName;
-        }
     }
 }
