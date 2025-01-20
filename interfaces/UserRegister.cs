@@ -12,5 +12,7 @@ namespace LibraryProject.interfaces
         void RegisterUser(string userName, string password);
 
         void Success();
+
+        static abstract void StartRegister();
     }
 }
