@@ -1,18 +1,18 @@
 [
   {
-    "userName": "Admin",
+    "userName": "ADMIN",
     "password": "$2a$10$j4k3WwDDZGHDGUmxa3uXL..Apx59J9B52jOCBWSN4LR6Xyvmxblka",
     "userId": 0,
     "borrowedBooks": []
   },
   {
-    "userName": "Olek",
+    "userName": "OLEK",
     "password": "$2a$10$ZOdLdAX3kGhEgzev4aLpIOVJ7YNztl/Wq8zZUe9W/i5bOnxY0Jr5e",
     "userId": 1,
     "borrowedBooks": []
   },
   {
-    "userName": "Pawel",
+    "userName": "PAWEL",
     "password": "$2a$10$hJhuXLu19DUfX5fnDVTJuenN3Cu61WknlZFJHUPSj.0iBX6ggAD2m",
     "userId": 2,
     "borrowedBooks": []
