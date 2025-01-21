@@ -10,7 +10,7 @@ using LibraryProject.exceptions;
 
 namespace LibraryProject.classes
 {
-    internal class User : UserAbstract
+    public class User : UserAbstract
     {
         public User(string userName, string password) : base(userName, password) {
         }
