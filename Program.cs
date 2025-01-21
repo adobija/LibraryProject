@@ -27,6 +27,7 @@ namespace LibraryProject
              
              */
             User loggedUser = null;
+
             try
             {
                 loggedUser = await UserLoginImpl.Login();
@@ -37,23 +38,19 @@ namespace LibraryProject
 
                 Environment.Exit(1);
             }
-            catch (UserDoesNotExistException e) { 
+            catch (UserDoesNotExistException e)
+            {
                 Console.WriteLine(e.Message);
 
                 Environment.Exit(1);
             }
-            
+
 
             Console.WriteLine($"Logged as {loggedUser.getUserName()}");
 
             //UserRegisterImpl.StartRegister();
 
-            //string json = JsonSerializer.Serialize(user, new JsonSerializerOptions { WriteIndented = true }); // Serializacja do JSON
-            //Console.WriteLine(json);
-            //await File.WriteAllTextAsync(UserDB, json);
-            //Success();
 
-            //userController.Register(username, password);
 
 
 
@@ -118,7 +115,7 @@ namespace LibraryProject
             //          case "2":
 
             //            Console.Write("Podaj nazwe i autora książki, którą chcesz wypożyczyć: ");
-            //            await LibraryActions.BorrowBookAsync();
+            //            await LibraryActions.BorrowBookAsync(loggedUser);
             //            break;
 
             //        case "3":
