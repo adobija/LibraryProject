@@ -40,3 +40,10 @@ Wymagania dotyczące projektu
 - zapis i odczyt danych o ksiazkach przechowywanych w JSON 
 - 
 
+
+# Update
+
+- Utworzony plik book.json zawierajacy ksiazki
+- Utworzony plik users.json zawierajacy userów
+- w LibraryActions.cs - działa  Przeglądanie książek z podziałem na kategorie (opcja 1)
+- 
