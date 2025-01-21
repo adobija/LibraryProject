@@ -15,9 +15,9 @@ namespace LibraryProject.abstracts
 {
     internal abstract class UserAbstract
     {
-        private string userName { get; set; }
-        private string password { get; set; }
-        private int userId { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        public int userId { get; set; }
 
         public List<BorrowedBook> BorrowedBooks { get; set; }
 
@@ -45,9 +45,12 @@ namespace LibraryProject.abstracts
             }
 
 
-            this.userName = validateUsername(userName);
+            //this.userName = validateUsername(userName);
+            this.userName = userName.ToUpper();
 
             this.password = BCrypt.Net.BCrypt.HashPassword(password, 10); 
+
+            this.BorrowedBooks = new List<BorrowedBook>();
         }
 
         protected UserAbstract(string userName, string password, int id) {
@@ -57,10 +60,9 @@ namespace LibraryProject.abstracts
             this.BorrowedBooks = new List<BorrowedBook>();
         }
 
-        public override string ToString()
-        {
-            return $"{this.userName},{this.password},{this.userId}";
-        }
+        //Constructor for deserialization
+        public UserAbstract() { }
+
 
         public string getUserName() {
             return userName;
@@ -74,29 +76,6 @@ namespace LibraryProject.abstracts
         public int getId()
         {
             return userId;
-        }
-
-        private string validateUsername(string userName) {
-
-            bool flag = true;
-            string validUserName = userName;
-            do
-            {
-                try
-                {
-                    if (!UserController.CheckUsername(validUserName))
-                    {
-                        flag = false;
-                    }
-                }
-                catch (UserAlreadyExistException e)
-                {
-                    Console.Write($"{e.Message} Please input not used username \n");
-                    validUserName = Console.ReadLine();
-                }
-            } while (flag);
-
-            return validUserName;
         }
     }
 }

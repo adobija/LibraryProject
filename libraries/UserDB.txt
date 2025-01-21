@@ -1,4 +1,0 @@
-Admin,$2a$10$z8UpCfbzlv0MZzWxTlMoc.q7rXvdN7Ti7bVY5RkGOu2OPir7r2fqC,0
-,$2a$10$cZf.GbLtyUr9GEQtTeBPv.Q8n/E28Z1OndSte.w0QzdN0oGymVagy,1
-s,$2a$10$k3kFJ.XbqIYzojljOhVMz.EheM47ZbecoEGKursqSxqO4O/TFlxhu,2
-d,$2a$10$FcmtZbBmWDndnQPm7nTk1.B4nlrrqWzXbn4FrmDLbhWfG6Uj8GUBy,3

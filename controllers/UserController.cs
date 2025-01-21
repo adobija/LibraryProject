@@ -6,41 +6,53 @@ using System.Threading.Tasks;
 using LibraryProject.classes;
 using LibraryProject.exceptions;
 using LibraryProject.interfaces.implementations;
-using LibraryProject.libraries;
+using System.Text.Json;
 
 namespace LibraryProject.controllers
 {
     internal class UserController : UserRegisterImpl
     {
-
+        private static string pathToUsersDB = "../../../libraries/UserDB.json";
         public void Register(string userName, string password) {
             RegisterUser(userName, password);
         }
 
-        public static List<User> FetchDbOfUsers()
+        
+
+        public static async Task<List<User>> FetchUsers()
         {
-            List<User> users = RefactorUserDb.FetchUsers();
-            return users;
+            
+            try
+            {
+                string json = File.ReadAllText(pathToUsersDB); // Wczytanie zawartości pliku
+                
+                var users = JsonSerializer.Deserialize<List<User>>(json, new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true});
+
+                return users;
+
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("UserController fail: UserDB.json file not found");
+            }
+
+            return new List<User>();
+
+
         }
 
-        public static bool CheckUsername(string userName)
-        {
+        public static async Task<User> getUserAsync(string username) { 
+            List<User> users = await FetchUsers();
 
-            List<User> listOfUsers = UserController.FetchDbOfUsers();
-            bool userNameAlredyExist = false;
-            foreach (User user in listOfUsers)
+            User foundUser = null;
+
+            foreach (User x in users)
             {
-                if (user.getUserName().ToUpper().Equals(userName.ToUpper()))
-                {
-                    userNameAlredyExist = true;
-                    break;
+                if (x.getUserName().ToUpper() == username.ToUpper()) { 
+                foundUser = x; break;
                 }
             }
-            if (userNameAlredyExist)
-            {
-                throw new UserAlreadyExistException();
-            }
-            return userNameAlredyExist;
+            return foundUser;
         }
     }
 }

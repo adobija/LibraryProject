@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryProject.classes;
 
 namespace LibraryProject.interfaces
 {
-    internal interface UserRegister
+    internal interface UserLogin
     {
-
-        void RegisterUser(string userName, string password);
-
-        void Success();
-
-        static abstract void StartRegister();
+        static abstract Task<User> Login();
     }
 }
