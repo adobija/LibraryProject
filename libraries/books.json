@@ -1,23 +1,23 @@
 [
   {
-    "Id": 1,
     "Title": "Wladca Pierscieni",
     "Author": "J.R.R. Tolkien",
-    "Category": "Fantasy",
-    "IsAvailable": true
+    "ISBN": 0,
+    "IsAvailable": true,
+    "Category": "Fantasy"
   },
   {
-    "Id": 2,
     "Title": "Hobbit",
     "Author": "J.R.R. Tolkien",
-    "Category": "Fantasy",
-    "IsAvailable": true
+    "ISBN": 1,
+    "IsAvailable": true,
+    "Category": "Fantasy"
   },
   {
-    "Id": 3,
     "Title": "Czysty kod",
     "Author": "Robert C. Martin",
-    "Category": "Informatyka",
-    "IsAvailable": true
+    "ISBN": 2,
+    "IsAvailable": false,
+    "Category": "Informatyka"
   }
 ]
