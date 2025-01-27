@@ -25,7 +25,7 @@ namespace LibraryProject
 
              Pawel | test123
              
-<<<<<<< HEAD
+
             // */
             //User loggedUser = null;
             //try
@@ -43,8 +43,7 @@ namespace LibraryProject
 
             //    Environment.Exit(1);
             //}
-=======
-             */
+
             User loggedUser = null;
 
             try
@@ -64,7 +63,7 @@ namespace LibraryProject
                 Environment.Exit(1);
             }
 
->>>>>>> e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
+            // e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
 
 
             //Console.WriteLine($"Logged as {loggedUser.getUserName()}");
@@ -108,13 +107,13 @@ namespace LibraryProject
             //await LibraryActions.BrowseBooksAsync();  // Wywołanie funkcji przeglądania książek
 
 
-
+          
             Console.WriteLine("Witaj w systemie biblioteki!");
             bool exit = false;
             Console.Clear(); // Czyszczenie ekranu
             while (!exit)
             {
-
+                Console.WriteLine($"\nZalogowany użytkownik: {loggedUser.userName}");
                 Console.WriteLine("\nWybierz akcję:");
                 Console.WriteLine("1. Przeglądaj książki");
                 Console.WriteLine("2. Wypożycz książkę");
@@ -134,16 +133,14 @@ namespace LibraryProject
 
 
                     case "2":
+                        // Wypożyczanie książki
+                        Console.Write("Podaj nazwę i autora książki, którą chcesz wypożyczyć: ");
+                        await LibraryActions.BorrowBookAsync(loggedUser);
 
-<<<<<<< HEAD
-                        Console.Write("Podaj nazwe i autora książki, którą chcesz wypożyczyć: ");
-                        await LibraryActions.BorrowBookAsync();
+                        // Zapisz aktualnego użytkownika po wypożyczeniu książki
+                        await UserController.SaveUpdatedUser(loggedUser);
                         break;
-=======
-            //            Console.Write("Podaj nazwe i autora książki, którą chcesz wypożyczyć: ");
-            //            await LibraryActions.BorrowBookAsync(loggedUser);
-            //            break;
->>>>>>> e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
+                    //e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
 
                     case "3":
 
