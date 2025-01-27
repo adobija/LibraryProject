@@ -27,7 +27,7 @@ namespace LibraryProject.controllers
             {
                 string json = File.ReadAllText(pathToUsersDB); // Wczytanie zawartości pliku
 
-                var users = JsonSerializer.Deserialize<List<User>>(json, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, WriteIndented = true });
+                var users = Newtonsoft.Json.JsonConvert.DeserializeObject<List<User>>(json);
 
                 return users;
 
