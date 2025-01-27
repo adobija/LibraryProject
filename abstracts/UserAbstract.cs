@@ -19,7 +19,7 @@ namespace LibraryProject.abstracts
         public string password { get; set; }
         public int userId { get; set; }
 
-        public List<BorrowedBook> BorrowedBooks { get; set; }
+        public List<BorrowedBook> BorrowedBooks { get; set; } = new List<BorrowedBook>();
 
         public UserAbstract(string userName, string password) { 
         

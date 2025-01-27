@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading;
+using LibraryProject.controllers;
 
 
 
@@ -111,12 +112,10 @@ public static class LibraryActions
 
 
 
-    // Wypo¿yczanie ksi¹¿ki z wyborem kategorii i ID ksi¹¿ki
+    // Wypo¿yczanie ksi¹¿ki z wyborem kategorii , wskazanie tytu³u i autora ksi¹zki
     public static async Task BorrowBookAsync(User loggedUser)
     {
         var books = await LibrarySystem.LoadBooksAsync();
-
-        // Pobierz unikalne kategorie ksi¹¿ek
         var categories = books.Select(b => b.Category).Distinct().ToList();
 
         Console.WriteLine("Wybierz kategoriê ksi¹¿ek:");
@@ -130,8 +129,6 @@ public static class LibraryActions
             categoryChoice > 0 && categoryChoice <= categories.Count)
         {
             string selectedCategory = categories[categoryChoice - 1];
-
-            // Filtruj ksi¹¿ki po kategorii i dostêpnoœci
             var availableBooks = books
                 .Where(b => b.Category == selectedCategory && b.IsAvailable)
                 .ToList();
@@ -146,47 +143,40 @@ public static class LibraryActions
 
                 string title = "";
                 string author = "";
-                DataBaseBook bookToReserve = null;
+                DataBaseBook bookToBorrow = null;
 
-                // Pêtla dla tytu³u ksi¹¿ki
-                while (bookToReserve == null)
+                while (bookToBorrow == null)
                 {
-                    Console.Write("Podaj tytu³ ksi¹¿ki, któr¹ chcesz zarezerwowaæ: ");
+                    Console.Write("Podaj tytu³ ksi¹¿ki, któr¹ chcesz wypo¿yczyæ: ");
                     title = Console.ReadLine();
+                    bookToBorrow = availableBooks.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
 
-                    // ZnajdŸ ksi¹¿kê na podstawie tytu³u
-                    bookToReserve = availableBooks.FirstOrDefault(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
-
-                    if (bookToReserve == null)
+                    if (bookToBorrow == null)
                     {
                         Console.WriteLine("Nie znaleziono ksi¹¿ki o podanym tytule. Spróbuj ponownie.");
                     }
                 }
 
-                // Pêtla dla autora ksi¹¿ki
-                while (bookToReserve != null)
+                while (true)
                 {
                     Console.Write("Podaj autora ksi¹¿ki: ");
                     author = Console.ReadLine();
 
-                    // SprawdŸ, czy autor zgadza siê z ksi¹¿k¹
-                    if (bookToReserve.Author.Equals(author, StringComparison.OrdinalIgnoreCase))
+                    if (bookToBorrow.Author.Equals(author, StringComparison.OrdinalIgnoreCase))
                     {
-                        // Oznaczenie ksi¹¿ki jako niedostêpnej
-                        bookToReserve.IsAvailable = false;
+                        // Aktualizuj ksi¹¿kê jako niedostêpn¹
+                        bookToBorrow.IsAvailable = false;
 
-                        BorrowedBook borrowedBook = new BorrowedBook(bookToReserve.ISBN, DateTime.Now);
-
+                        var borrowedBook = new BorrowedBook(bookToBorrow.ISBN, DateTime.Now);
                         loggedUser.BorrowedBooks.Add(borrowedBook);
 
-                        //bookToReserve.licznikWypozyczen++;
-                        //+1 do iloœci wypozyczen ksiazki bookToReserve
-                        //zapisanie usera do UserDB.json
-
-                        // Zapisanie zmian
+                        // Zapisz zmiany w ksi¹¿kach
                         await LibrarySystem.SaveBooksAsync(books);
 
-                        Console.WriteLine($"Ksi¹¿ka '{bookToReserve.Title}' zosta³a zarezerwowana.");
+                        // Zapisz zmiany w u¿ytkownikach
+                        await UserController.SaveUpdatedUser(loggedUser);
+
+                        Console.WriteLine($"Ksi¹¿ka '{bookToBorrow.Title}' zosta³a wypo¿yczona.");
                         break;
                     }
                     else
@@ -205,6 +195,9 @@ public static class LibraryActions
             Console.WriteLine("Niepoprawny wybór kategorii.");
         }
     }
+
+
+
 
     public static async Task ReturnBookAsync()
     {
