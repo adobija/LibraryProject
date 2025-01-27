@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Threading;
+using LibraryProject.controllers;
 
 namespace LibraryProject.classes;
 
@@ -45,5 +46,14 @@ public class LibrarySystem
         string json = JsonSerializer.Serialize(books, new JsonSerializerOptions { WriteIndented = true }); // Serializacja do JSON
         await File.WriteAllTextAsync(BooksFile, json); // Zapis do pliku
     }
+
+    //public static async Task SaveUsersAsync()
+    //{
+    //    string fullPath = "../../../libraries/userDB.json";
+    //    var usersJson = JsonSerializer.Serialize(UserController.FetchUsers(), new JsonSerializerOptions { WriteIndented = true });
+
+    //    await File.WriteAllTextAsync(fullPath, usersJson);
+    //}
+
 
 };

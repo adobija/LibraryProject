@@ -11,6 +11,11 @@ namespace LibraryProject.classes
         public long BookId { get; set; } // Identyfikator książki
         public DateTime BorrowDate { get; set; } // Data wypożyczenia
 
-        public BorrowedBook(long BookId, DateTime BorrowDate) { }
+        public BorrowedBook(long bookId, DateTime borrowDate) {
+            BookId = bookId;
+            BorrowDate = borrowDate;
+
+
+        }
     }
 }
