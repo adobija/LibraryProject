@@ -22,12 +22,12 @@ Wymagania dotyczące projektu
  Olek: 
  Administrator tworzenie ksiazek, 
  usuwanie ksiazek,
- Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)
+ <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del>
 
  Jakub: 
- przegladac ksiazki, 
+ <del>przegladac ksiazki,</del> 
  statystyki ksaizek, 
- wypozyczac, 
+ wypozyczac,
  zwracac, 
  wyswietlanie dni ile ksiazka jest wypozyczona
 
@@ -46,7 +46,6 @@ Wymagania dotyczące projektu
 - Utworzony plik book.json zawierajacy ksiazki
 - Utworzony plik users.json zawierajacy userów
 - w LibraryActions.cs - działa  Przeglądanie książek z podziałem na kategorie (opcja 1)
-- 
 
 # Made by Jakub Kruźlak && Aleksander Dobija
 

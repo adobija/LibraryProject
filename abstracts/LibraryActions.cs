@@ -112,7 +112,7 @@ public static class LibraryActions
 
 
     // Wypo¿yczanie ksi¹¿ki z wyborem kategorii i ID ksi¹¿ki
-    public static async Task BorrowBookAsync()
+    public static async Task BorrowBookAsync(User loggedUser)
     {
         var books = await LibrarySystem.LoadBooksAsync();
 
@@ -174,6 +174,14 @@ public static class LibraryActions
                     {
                         // Oznaczenie ksi¹¿ki jako niedostêpnej
                         bookToReserve.IsAvailable = false;
+
+                        BorrowedBook borrowedBook = new BorrowedBook(bookToReserve.ISBN, DateTime.Now);
+
+                        loggedUser.BorrowedBooks.Add(borrowedBook);
+
+                        //bookToReserve.licznikWypozyczen++;
+                        //+1 do iloœci wypozyczen ksiazki bookToReserve
+                        //zapisanie usera do UserDB.json
 
                         // Zapisanie zmian
                         await LibrarySystem.SaveBooksAsync(books);

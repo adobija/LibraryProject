@@ -13,7 +13,7 @@ using Formatting = Newtonsoft.Json.Formatting;
 
 namespace LibraryProject.abstracts
 {
-    internal abstract class UserAbstract
+    public abstract class UserAbstract
     {
         public string userName { get; set; }
         public string password { get; set; }

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LibraryProject.classes
 {
-    internal class BorrowedBook 
+    public class BorrowedBook 
     {
         public long BookId { get; set; } // Identyfikator książki
         public DateTime BorrowDate { get; set; } // Data wypożyczenia
+
+        public BorrowedBook(long BookId, DateTime BorrowDate) { }
     }
 }

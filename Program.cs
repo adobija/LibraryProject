@@ -25,6 +25,7 @@ namespace LibraryProject
 
              Pawel | test123
              
+<<<<<<< HEAD
             // */
             //User loggedUser = null;
             //try
@@ -42,18 +43,35 @@ namespace LibraryProject
 
             //    Environment.Exit(1);
             //}
+=======
+             */
+            User loggedUser = null;
+
+            try
+            {
+                loggedUser = await UserLoginImpl.Login();
+            }
+            catch (InvalidPasswordException e)
+            {
+                Console.WriteLine(e.Message);
+
+                Environment.Exit(1);
+            }
+            catch (UserDoesNotExistException e)
+            {
+                Console.WriteLine(e.Message);
+
+                Environment.Exit(1);
+            }
+
+>>>>>>> e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
 
 
             //Console.WriteLine($"Logged as {loggedUser.getUserName()}");
 
             //UserRegisterImpl.StartRegister();
 
-            //string json = JsonSerializer.Serialize(user, new JsonSerializerOptions { WriteIndented = true }); // Serializacja do JSON
-            //Console.WriteLine(json);
-            //await File.WriteAllTextAsync(UserDB, json);
-            //Success();
 
-            //userController.Register(username, password);
 
 
 
@@ -117,9 +135,15 @@ namespace LibraryProject
 
                     case "2":
 
+<<<<<<< HEAD
                         Console.Write("Podaj nazwe i autora książki, którą chcesz wypożyczyć: ");
                         await LibraryActions.BorrowBookAsync();
                         break;
+=======
+            //            Console.Write("Podaj nazwe i autora książki, którą chcesz wypożyczyć: ");
+            //            await LibraryActions.BorrowBookAsync(loggedUser);
+            //            break;
+>>>>>>> e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
 
                     case "3":
 
