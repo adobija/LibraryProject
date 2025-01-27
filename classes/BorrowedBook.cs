@@ -17,5 +17,7 @@ namespace LibraryProject.classes
 
 
         }
+
+        public BorrowedBook() { }
     }
 }
