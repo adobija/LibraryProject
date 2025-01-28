@@ -1,23 +1,23 @@
 [
-  {
-    "Title": "Wladca Pierscieni",
-    "Author": "J.R.R. Tolkien",
-    "ISBN": 0,
-    "IsAvailable": true,
-    "Category": "Fantasy"
-  },
-  {
-    "Title": "Hobbit",
-    "Author": "J.R.R. Tolkien",
-    "ISBN": 1,
-    "IsAvailable": true,
-    "Category": "Fantasy"
-  },
-  {
-    "Title": "Czysty kod",
-    "Author": "Robert C. Martin",
-    "ISBN": 2,
-    "IsAvailable": false,
-    "Category": "Informatyka"
-  }
+    {
+        "Title": "Wladca Pierscieni",
+        "Author": "J.R.R. Tolkien",
+        "ISBN": 0,
+        "IsAvailable": true,
+        "Category": "Fantasy"
+    },
+    {
+        "Title": "Hobbit",
+        "Author": "J.R.R. Tolkien",
+        "ISBN": 1,
+        "IsAvailable": true,
+        "Category": "Fantasy"
+    },
+    {
+        "Title": "Czysty kod",
+        "Author": "Robert C. Martin",
+        "ISBN": 2,
+        "IsAvailable": true,
+        "Category": "Informatyka"
+    }
 ]
