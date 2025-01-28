@@ -28,7 +28,7 @@ namespace LibraryProject.libraries
             }
             else
             {
-                return null;
+                throw new NotImplementedException($"{type} category does not exist!");
             }
 
         }
