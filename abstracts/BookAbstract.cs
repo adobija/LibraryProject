@@ -56,7 +56,7 @@ namespace LibraryProject.abstracts
 
             String output = $"Book {Title} written by {Author} ({refactoredISBN})";
 
-            Console.WriteLine(output);
+            Console.Write(output);
         }
 
         private string refactorISBN() { 
