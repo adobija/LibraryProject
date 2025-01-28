@@ -20,15 +20,15 @@ Wymagania dotyczące projektu
 
  # Description 
  Olek: 
- Administrator tworzenie ksiazek, 
- usuwanie ksiazek,
+ <del>Administrator tworzenie ksiazek, </del> 
+ <del>usuwanie ksiazek,</del> 
  <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del>
 
  Jakub: 
  <del>przegladac ksiazki,</del> 
  statystyki ksaizek, 
- wypozyczac,
- zwracac, 
+ <del>wypozyczac,</del>
+ <del>zwracac,</del>
  wyswietlanie dni ile ksiazka jest wypozyczona
 
 
