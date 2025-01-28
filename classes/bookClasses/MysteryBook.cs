@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LibraryProject.abstracts;
 
-namespace LibraryProject.classes
+namespace LibraryProject.classes.bookClasses
 {
     internal class MysteryBook : BookAbstract
     {
@@ -20,7 +20,7 @@ namespace LibraryProject.classes
         public override void printDetailsOfBook()
         {
             base.printDetailsOfBook();
-            Console.WriteLine(" - " + this.GetType().Name);
+            Console.WriteLine(" - " + GetType().Name);
         }
     }
 }
