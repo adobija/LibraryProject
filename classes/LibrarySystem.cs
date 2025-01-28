@@ -6,6 +6,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Threading;
 using LibraryProject.controllers;
+using LibraryProject.exceptions;
+using LibraryProject.libraries;
 
 namespace LibraryProject.classes;
 
@@ -54,6 +56,65 @@ public class LibrarySystem
 
     //    await File.WriteAllTextAsync(fullPath, usersJson);
     //}
+    public static async Task addBookToSystemAsync(User loggedUser) {
+        if (loggedUser.userId != 0 && !loggedUser.userName.ToUpper().Equals("ADMIN")) {
+            throw new PermissionException();
+        }
 
+        List<DataBaseBook> books = await LoadBooksAsync();
+
+        Console.WriteLine("Insert category of book (Fantasy/Romance/Mystery)");
+        string category = Console.ReadLine().ToUpper();
+
+        var newBook = FactoryDesignLib.getBook(category);
+
+        Console.WriteLine("Insert Title of Book");
+        string title = Console.ReadLine();
+
+        Console.WriteLine($"Insert Author of {title}");
+        string author = Console.ReadLine();
+
+        long ISBN;
+        bool flag = true;
+        do
+        {
+            Console.WriteLine($"Insert ISBN of {title} written by {author}");
+            ISBN = long.Parse(Console.ReadLine());
+
+            try
+            {
+                bool firstCondition = !ISBNValidator.isValid(ISBN);
+                bool secondCondition = await ISBNValidator.isInDatabaseAsync(ISBN);
+
+                flag = firstCondition && secondCondition;
+            }
+            catch (InvalidISBN e)
+            {
+                Console.WriteLine($"{e.Message}, try again");
+            }
+            catch (ISBNAlreadyExistException e)
+            {
+                Console.WriteLine($"{e.Message}, try again");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unexpected error! Try Again!");
+            }
+            
+
+        } while (flag);
+        
+
+        newBook.Title = title;
+        newBook.ISBN = ISBN;
+        newBook.Author = author;
+
+        books.Add((DataBaseBook)newBook);
+
+        SaveBooksAsync(books);
+        Console.Write($"Successfully added ");
+        newBook.printDetailsOfBook();
+        
+    }
 
 };
