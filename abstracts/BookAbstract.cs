@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryProject.exceptions;
+using LibraryProject.libraries;
 
 namespace LibraryProject.abstracts
 {
@@ -19,13 +20,22 @@ namespace LibraryProject.abstracts
         {
             this.Title = title;
             this.Author = author;
-            if (isbn < 1000000000000 || isbn > 9999999999999)
+
+            bool isValid = true;
+            do
             {
-                throw new InvalidISBN();
-            }
-            else {
-                this.ISBN = isbn;
-            }
+                try
+                {
+                    isValid = !ISBNValidator.isValid(isbn);
+                }
+                catch (InvalidISBN e)
+                {
+                    Console.WriteLine(e.Message);
+                    continue;
+                }
+                
+            } while (isValid);
+            
 
             this.IsAvailable = true;
             this.Category = Category;
@@ -44,9 +54,9 @@ namespace LibraryProject.abstracts
 
             string refactoredISBN = refactorISBN();
 
-            String output = $"The book called {Title} written by {Author} ({refactoredISBN})";
+            String output = $"Book {Title} written by {Author} ({refactoredISBN})";
 
-            Console.Write(output);
+            Console.WriteLine(output);
         }
 
         private string refactorISBN() { 
