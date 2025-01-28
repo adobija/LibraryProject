@@ -9,11 +9,11 @@ namespace LibraryProject.abstracts
 {
     public abstract class BookAbstract
     {
-        public required string Title {  get; set; } 
-        public required string Author { get; set; } 
+        public string Title {  get; set; } 
+        public string Author { get; set; } 
         public long ISBN { get; set; }
         public bool IsAvailable { get; set; }
-        public required string Category { get; set; } 
+        public string Category { get; set; } 
 
         protected BookAbstract(string title, string author, long isbn, string Category)
         {
