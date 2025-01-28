@@ -188,7 +188,7 @@ public class LibrarySystem
                 books.RemoveAt(input);
                 Console.WriteLine($"Successfully removed ");
                 bookToRemove.printDetailsOfBook();
-                Console.WriteLine("?");
+                Console.WriteLine();
                 flag = false;
             }
             else {
