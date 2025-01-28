@@ -75,13 +75,20 @@ public class LibrarySystem
         Console.WriteLine($"Insert Author of {title}");
         string author = Console.ReadLine();
 
-        long ISBN;
+        long ISBN = 0L;
         bool flag = true;
         do
         {
-            Console.Clear();
+            
             Console.WriteLine($"Insert ISBN of {title} written by {author}");
-            ISBN = long.Parse(Console.ReadLine());
+            try
+            {
+                ISBN = long.Parse(Console.ReadLine());
+            }
+            catch (Exception e) {
+                Console.WriteLine("Unexpected error! Try Again!");
+            }
+            
 
             try
             {
@@ -111,7 +118,9 @@ public class LibrarySystem
         newBook.ISBN = ISBN;
         newBook.Author = author;
 
-        books.Add((DataBaseBook)newBook);
+        DataBaseBook refactoredBook = new DataBaseBook(newBook.Title, newBook.Author, newBook.ISBN, newBook.Category, true);
+
+        books.Add(refactoredBook);
 
         SaveBooksAsync(books);
         Console.Write($"Successfully added ");
@@ -138,7 +147,9 @@ public class LibrarySystem
             int i = 0;
             foreach (DataBaseBook book in books)
             {
-                Console.WriteLine($"{i}: {book.printDetailsOfBook}\n");
+                Console.Write($"{i}: ");
+                book.printDetailsOfBook();
+                Console.WriteLine();
                 i++;
             }
             int input;
@@ -156,7 +167,9 @@ public class LibrarySystem
             }
 
             DataBaseBook bookToRemove = books[input];
-            Console.WriteLine($"Do you want remove - {bookToRemove.printDetailsOfBook}?");
+            Console.WriteLine($"Do you want remove - ");
+            bookToRemove.printDetailsOfBook();
+            Console.WriteLine("?");
             Console.WriteLine("Yes [Y]/No [N]");
             
             string consent = Console.ReadLine().ToUpper();
@@ -164,11 +177,14 @@ public class LibrarySystem
             if (consent.Equals("YES") || consent.Equals("Y"))
             {
                 books.RemoveAt(input);
-                Console.WriteLine($"Successfully removed {bookToRemove.printDetailsOfBook}");
+                Console.WriteLine($"Successfully removed ");
+                bookToRemove.printDetailsOfBook();
+                Console.WriteLine("?");
                 flag = false;
             }
-            else { 
-                flag = true;
+            else {
+                Console.WriteLine("Action not approved");
+                return false;
             }
 
             SaveBooksAsync( books );
