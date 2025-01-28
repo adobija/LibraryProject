@@ -9,6 +9,7 @@ using LibraryProject.controllers;
 using LibraryProject.exceptions;
 using LibraryProject.libraries;
 using System.Runtime.InteropServices;
+using LibraryProject.abstracts;
 
 namespace LibraryProject.classes;
 
@@ -66,8 +67,16 @@ public class LibrarySystem
 
         Console.WriteLine("Insert category of book (Fantasy/Romance/Mystery)");
         string category = Console.ReadLine().ToUpper();
-
-        var newBook = FactoryDesignLib.getBook(category);
+        BookAbstract newBook;
+        try
+        {
+            newBook = FactoryDesignLib.getBook(category);
+        }
+        catch (NotImplementedException e){ 
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        
 
         Console.WriteLine("Insert Title of Book");
         string title = Console.ReadLine();
