@@ -8,6 +8,7 @@ using System.Threading;
 using LibraryProject.controllers;
 using LibraryProject.exceptions;
 using LibraryProject.libraries;
+using System.Runtime.InteropServices;
 
 namespace LibraryProject.classes;
 
@@ -56,9 +57,9 @@ public class LibrarySystem
 
     //    await File.WriteAllTextAsync(fullPath, usersJson);
     //}
-    public static async Task addBookToSystemAsync(User loggedUser) {
+    public static async Task<bool> addBookToSystemAsync(User loggedUser) {
         if (loggedUser.userId != 0 && !loggedUser.userName.ToUpper().Equals("ADMIN")) {
-            throw new PermissionException();
+            return false;
         }
 
         List<DataBaseBook> books = await LoadBooksAsync();
@@ -78,6 +79,7 @@ public class LibrarySystem
         bool flag = true;
         do
         {
+            Console.Clear();
             Console.WriteLine($"Insert ISBN of {title} written by {author}");
             ISBN = long.Parse(Console.ReadLine());
 
@@ -114,6 +116,66 @@ public class LibrarySystem
         SaveBooksAsync(books);
         Console.Write($"Successfully added ");
         newBook.printDetailsOfBook();
+        Console.WriteLine();
+
+        return true;
+
+
+    }
+
+    public static async Task<bool> removeBookAsync(User loggedUser) {
+        if (loggedUser.userId != 0 && !loggedUser.userName.ToUpper().Equals("ADMIN"))
+        {
+            return false;
+        }
+
+        List<DataBaseBook> books = await LoadBooksAsync();
+        bool flag = false;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("Choose book to remove:");
+            int i = 0;
+            foreach (DataBaseBook book in books)
+            {
+                Console.WriteLine($"{i}: {book.printDetailsOfBook}\n");
+                i++;
+            }
+            int input;
+            try {
+                input = int.Parse(Console.ReadLine());
+            } catch (Exception e) {
+                Console.WriteLine("Unexpected error! Try Again!");
+                continue;
+            }
+            
+
+            if (input > i) {
+                Console.WriteLine("This index does not exist! Try again!");
+                continue;
+            }
+
+            DataBaseBook bookToRemove = books[input];
+            Console.WriteLine($"Do you want remove - {bookToRemove.printDetailsOfBook}?");
+            Console.WriteLine("Yes [Y]/No [N]");
+            
+            string consent = Console.ReadLine().ToUpper();
+
+            if (consent.Equals("YES") || consent.Equals("Y"))
+            {
+                books.RemoveAt(input);
+                Console.WriteLine($"Successfully removed {bookToRemove.printDetailsOfBook}");
+                flag = false;
+            }
+            else { 
+                flag = true;
+            }
+
+            SaveBooksAsync( books );
+
+        } while (flag);
+        return true;
+
         
     }
 
