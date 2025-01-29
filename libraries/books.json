@@ -21,6 +21,6 @@
     "ISBN": 1234567890345,
     "IsAvailable": true,
     "Category": "Fantasy",
-    "borrowCount": 1
+    "borrowCount": 2
   }
 ]
