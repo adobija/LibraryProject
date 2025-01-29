@@ -23,6 +23,7 @@ Wymagania dotyczące projektu
  <del>Administrator tworzenie ksiazek, </del> 
  <del>usuwanie ksiazek,</del> 
  <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del>
+ menu 
 
  Jakub: 
  <del>przegladac ksiazki,</del> 
