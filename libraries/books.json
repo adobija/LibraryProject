@@ -4,20 +4,23 @@
     "Author": "J.R.R. Tolkien",
     "ISBN": 9788390021010,
     "IsAvailable": true,
-    "Category": "Fantasy"
-  },
-  {
-    "Title": "Hobbit",
-    "Author": "J.R.R. Tolkien",
-    "ISBN": 9788390021011,
-    "IsAvailable": true,
-    "Category": "Fantasy"
+    "Category": "Fantasy",
+    "borrowCount": 0
   },
   {
     "Title": "Sherlock Holmes",
     "Author": "John Watson",
     "ISBN": 3249479374014,
     "IsAvailable": true,
-    "Category": "Mystery"
+    "Category": "Mystery",
+    "borrowCount": 0
+  },
+  {
+    "Title": "Wiedzmin",
+    "Author": "Andrzej Sapkowski",
+    "ISBN": 1234567890345,
+    "IsAvailable": true,
+    "Category": "Fantasy",
+    "borrowCount": 1
   }
 ]
