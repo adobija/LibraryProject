@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using LibraryProject.classes;
+using LibraryProject.libraries;
 
 
 
@@ -201,7 +202,7 @@ public static class LibraryActions
 
 
 
-    public static async Task ReturnBookAsync()
+    public static async Task ReturnBookAsync(User loggedUser)
     {
         var books = await LibrarySystem.LoadBooksAsync();
 
@@ -228,10 +229,7 @@ public static class LibraryActions
             if (borrowedBooks.Any())
             {
                 Console.WriteLine($"Wypo¿yczone ksi¹¿ki w kategorii: {selectedCategory}");
-                foreach (var book in borrowedBooks)
-                {
-                    Console.WriteLine($"Tytu³: {book.Title}, Autor: {book.Author}");
-                }
+                ListPrint.printList(borrowedBooks);
 
                 string title = "";
                 string author = "";
@@ -263,9 +261,24 @@ public static class LibraryActions
                     {
                         // Oznaczenie ksi¹¿ki jako dostêpnej
                         bookToReturn.IsAvailable = true;
+                        int index = 0;
+                        foreach (DataBaseBook book in borrowedBooks) {
+                            if (book.Title.Equals(title, StringComparison.OrdinalIgnoreCase) && book.Author.Equals(author, StringComparison.OrdinalIgnoreCase))
+                            {
+                                break;
+                            }
+                            else {
+                                index++;
+                            }
+                        } 
+
+                        loggedUser.BorrowedBooks.RemoveAt(index);
 
                         // Zapisanie zmian
                         await LibrarySystem.SaveBooksAsync(books);
+
+                        // Zapisz zmiany w u¿ytkownikach
+                        await UserController.SaveUpdatedUser(loggedUser);
 
                         Console.WriteLine($"Ksi¹¿ka '{bookToReturn.Title}' zosta³a zwrócona i jest teraz dostêpna do wypo¿yczenia.");
                         break;
