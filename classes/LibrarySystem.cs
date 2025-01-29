@@ -176,7 +176,7 @@ public class LibrarySystem
             }
 
             DataBaseBook bookToRemove = books[input];
-            Console.WriteLine($"Do you want remove - ");
+            Console.Write($"Do you want remove - ");
             bookToRemove.printDetailsOfBook();
             Console.WriteLine("?");
             Console.WriteLine("Yes [Y]/No [N]");
@@ -186,7 +186,7 @@ public class LibrarySystem
             if (consent.Equals("YES") || consent.Equals("Y"))
             {
                 books.RemoveAt(input);
-                Console.WriteLine($"Successfully removed ");
+                Console.Write($"Successfully removed ");
                 bookToRemove.printDetailsOfBook();
                 Console.WriteLine();
                 flag = false;
