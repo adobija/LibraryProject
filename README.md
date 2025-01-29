@@ -27,6 +27,7 @@ Wymagania dotyczące projektu
  Jakub: 
  <del>przegladac ksiazki,</del> 
  <del>statystyki ksaizek,</del>
+  <del>Generowanie statystyk - Bitmap</del>
  <del>wypozyczac,</del>
  <del>zwracac,</del>
  wyswietlanie dni ile ksiazka jest wypozyczona *później*
