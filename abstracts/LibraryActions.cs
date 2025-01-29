@@ -166,6 +166,7 @@ public static class LibraryActions
                     {
                         // Aktualizuj ksi¹¿kê jako niedostêpn¹
                         bookToBorrow.IsAvailable = false;
+                        bookToBorrow.plusBorrowCount();
 
                         var borrowedBook = new BorrowedBook(bookToBorrow.ISBN, DateTime.Now);
                         loggedUser.BorrowedBooks.Add(borrowedBook);
@@ -177,6 +178,7 @@ public static class LibraryActions
                         await UserController.SaveUpdatedUser(loggedUser);
 
                         Console.WriteLine($"Ksi¹¿ka '{bookToBorrow.Title}' zosta³a wypo¿yczona.");
+
                         break;
                     }
                     else
