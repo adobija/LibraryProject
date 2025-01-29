@@ -5,7 +5,7 @@
     "ISBN": 9788390021010,
     "IsAvailable": true,
     "Category": "Fantasy",
-    "borrowCount": 0
+    "borrowCount": 5
   },
   {
     "Title": "Sherlock Holmes",
@@ -13,7 +13,7 @@
     "ISBN": 3249479374014,
     "IsAvailable": true,
     "Category": "Mystery",
-    "borrowCount": 0
+    "borrowCount": 10
   },
   {
     "Title": "Wiedzmin",
@@ -21,6 +21,6 @@
     "ISBN": 1234567890345,
     "IsAvailable": true,
     "Category": "Fantasy",
-    "borrowCount": 2
+    "borrowCount": 8
   }
 ]
