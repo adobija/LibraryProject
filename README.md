@@ -26,10 +26,10 @@ Wymagania dotyczące projektu
 
  Jakub: 
  <del>przegladac ksiazki,</del> 
- statystyki ksaizek, 
+ <del>statystyki ksaizek,</del>
  <del>wypozyczac,</del>
  <del>zwracac,</del>
- wyswietlanie dni ile ksiazka jest wypozyczona
+ wyswietlanie dni ile ksiazka jest wypozyczona *później*
 
 
 - bazy danych ksiazek jako osobny plik JSON, podział na kategorie, 
