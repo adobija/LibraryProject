@@ -25,7 +25,12 @@ namespace LibraryProject
              Pawel | test123
              
 
+            
+
             // */
+
+            await BarChartGenerator.generate();
+
             //User loggedUser = null;
             //try
             //{
@@ -45,24 +50,24 @@ namespace LibraryProject
             //bool flag = true;
             //do
             //{
-                    User loggedUser = null;
+                //    User loggedUser = null;
             
-                try
-                {
-                    loggedUser = await UserLoginImpl.Login();
-                }
-                catch (InvalidPasswordException e)
-                {
-                    Console.WriteLine(e.Message);
+                //try
+                //{
+                //    loggedUser = await UserLoginImpl.Login();
+                //}
+                //catch (InvalidPasswordException e)
+                //{
+                //    Console.WriteLine(e.Message);
 
-                    Environment.Exit(1);
-                }
-                catch (UserDoesNotExistException e)
-                {
-                    Console.WriteLine(e.Message);
+                //    Environment.Exit(1);
+                //}
+                //catch (UserDoesNotExistException e)
+                //{
+                //    Console.WriteLine(e.Message);
 
-                    Environment.Exit(1);
-                }
+                //    Environment.Exit(1);
+                //}
 
             //    Console.WriteLine("1. remove 2. add");
             //    int input = int.Parse(Console.ReadLine());
@@ -136,58 +141,58 @@ namespace LibraryProject
 
 
 
-            Console.WriteLine("Witaj w systemie biblioteki!");
-            bool exit = false;
-            Console.Clear(); // Czyszczenie ekranu
-            while (!exit)
-            {
-                Console.WriteLine($"\nZalogowany użytkownik: {loggedUser.userName}");
-                Console.WriteLine("\nWybierz akcję:");
-                Console.WriteLine("1. Przeglądaj książki");
-                Console.WriteLine("2. Wypożycz książkę");
-                Console.WriteLine("3. Zwróć książkę");
-                Console.WriteLine("4. Wyświetl panel wypożyczeń");
-                Console.WriteLine("5. Wyjdź");
+            //Console.WriteLine("Witaj w systemie biblioteki!");
+            //bool exit = false;
+            //Console.Clear(); // Czyszczenie ekranu
+            //while (!exit)
+            //{
+            //    Console.WriteLine($"\nZalogowany użytkownik: {loggedUser.userName}");
+            //    Console.WriteLine("\nWybierz akcję:");
+            //    Console.WriteLine("1. Przeglądaj książki");
+            //    Console.WriteLine("2. Wypożycz książkę");
+            //    Console.WriteLine("3. Zwróć książkę");
+            //    Console.WriteLine("4. Wyświetl panel wypożyczeń");
+            //    Console.WriteLine("5. Wyjdź");
 
-                Console.Write("Twój wybór: ");
-                string choice = Console.ReadLine();
+            //    Console.Write("Twój wybór: ");
+            //    string choice = Console.ReadLine();
 
-                switch (choice)
-                {
-                    case "1":
-                        Console.Clear();
-                        await LibraryActions.BrowseBooksAsync();
-                        break;
-
-
-                    case "2":
-                        // Wypożyczanie książki
-                        Console.Write("Podaj nazwę i autora książki, którą chcesz wypożyczyć: ");
-                        await LibraryActions.BorrowBookAsync(loggedUser);
-
-                        // Zapisz aktualnego użytkownika po wypożyczeniu książki
-                        await UserController.SaveUpdatedUser(loggedUser);
-                        break;
-                    //e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
-
-                    case "3":
-
-                        Console.Write("Podaj autora i nazwe książki, którą chcesz zwrócić: ");
-                        await LibraryActions.ReturnBookAsync(loggedUser);
-                        break;
+            //    switch (choice)
+            //    {
+            //        case "1":
+            //            Console.Clear();
+            //            await LibraryActions.BrowseBooksAsync();
+            //            break;
 
 
+            //        case "2":
+            //            // Wypożyczanie książki
+            //            Console.Write("Podaj nazwę i autora książki, którą chcesz wypożyczyć: ");
+            //            await LibraryActions.BorrowBookAsync(loggedUser);
 
-                    case "4":
-                        Console.WriteLine("Dziękujemy za skorzystanie z systemu biblioteki. Do widzenia!");
-                        exit = true;
-                        break;
+            //            // Zapisz aktualnego użytkownika po wypożyczeniu książki
+            //            await UserController.SaveUpdatedUser(loggedUser);
+            //            break;
+            //        //e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
 
-                    default:
-                        Console.WriteLine("Nieprawidłowy wybór. Spróbuj ponownie.");
-                        break;
-                }
-            }
+            //        case "3":
+
+            //            Console.Write("Podaj autora i nazwe książki, którą chcesz zwrócić: ");
+            //            await LibraryActions.ReturnBookAsync(loggedUser);
+            //            break;
+
+
+
+            //        case "4":
+            //            Console.WriteLine("Dziękujemy za skorzystanie z systemu biblioteki. Do widzenia!");
+            //            exit = true;
+            //            break;
+
+            //        default:
+            //            Console.WriteLine("Nieprawidłowy wybór. Spróbuj ponownie.");
+            //            break;
+            //    }
+            //}
         }
     }
 
