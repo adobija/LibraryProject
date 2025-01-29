@@ -19,20 +19,20 @@ Wymagania dotyczące projektu
  
 
  # Description 
- Olek: 
- <del>Administrator tworzenie ksiazek, </del> 
- <del>usuwanie ksiazek,</del> 
- <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del>
- menu 
-
- Jakub: 
- <del>przegladac ksiazki,</del> 
- <del>statystyki ksaizek,</del>
-  <del>Generowanie statystyk - Bitmap</del>
- <del>wypozyczac,</del>
- <del>zwracac,</del>
- wyswietlanie dni ile ksiazka jest wypozyczona *później*
-
+ Olek: <br>
+ <del>Administrator tworzenie ksiazek, </del><br>
+ <del>usuwanie ksiazek,</del> <br>
+ <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del><br>
+ menu <br>
+<br>
+ Jakub: <br>
+ <del>przegladac ksiazki,</del> <br>
+ <del>statystyki ksaizek,</del><br>
+  <del>Generowanie statystyk - Bitmap</del><br>
+ <del>wypozyczac,</del><br>
+ <del>zwracac,</del><br>
+ wyswietlanie dni ile ksiazka jest wypozyczona *później*<br>
+<br>
 
 - bazy danych ksiazek jako osobny plik JSON, podział na kategorie, 
 - oparta na wzorcu projektowym Factory
