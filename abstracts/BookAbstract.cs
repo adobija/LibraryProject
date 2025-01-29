@@ -14,7 +14,9 @@ namespace LibraryProject.abstracts
         public string Author { get; set; } 
         public long ISBN { get; set; }
         public bool IsAvailable { get; set; }
-        public string Category { get; set; } 
+        public string Category { get; set; }
+
+        public int borrowCount { get; set; } = 0;
 
         protected BookAbstract(string title, string author, long isbn, string Category)
         {
@@ -76,6 +78,11 @@ namespace LibraryProject.abstracts
         private long getISBN()
         {
             return this.ISBN;
+        }
+
+        public void plusBorrowCount()
+        {
+            this.borrowCount++;
         }
     }
 }
