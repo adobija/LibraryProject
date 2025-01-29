@@ -1,6 +1,6 @@
 # Library_project
 
-Wymagania dotyczące projektu
+Wymagania dotyczące projektu<br>
 -Projekt jest oparty na programowaniu obiektowym i implementuje dziedziczenie, klasy abstrakcyjne, interfejsy, kompozycje (Obowiązkowo)
  
 -Program spełnia zasady SOLID oraz jego struktura oparta jest na wybranym wzorcu projektowym (Obowiązkowo)
