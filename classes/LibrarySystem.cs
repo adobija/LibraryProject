@@ -153,14 +153,7 @@ public class LibrarySystem
         {
             Console.Clear();
             Console.WriteLine("Choose book to remove:");
-            int i = 0;
-            foreach (DataBaseBook book in books)
-            {
-                Console.Write($"{i}: ");
-                book.printDetailsOfBook();
-                Console.WriteLine();
-                i++;
-            }
+            ListPrint.printList(books);
             int input;
             try {
                 input = int.Parse(Console.ReadLine());
@@ -170,7 +163,7 @@ public class LibrarySystem
             }
             
 
-            if (input > i) {
+            if (input > books.Count()) {
                 Console.WriteLine("This index does not exist! Try again!");
                 continue;
             }
