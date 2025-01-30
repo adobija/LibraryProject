@@ -11,6 +11,7 @@ namespace LibraryProject
 {
     internal class Program
     {
+        
         static async Task Main(string[] args)
         {
             /*
@@ -23,15 +24,66 @@ namespace LibraryProject
              Olek | P@$$w0rd
 
              Pawel | test123
-             
+            */
 
-            
+            Console.WriteLine("Welcome to library system!\n");
+            User loggedUser = null;
+            bool flag = true;
+            do {
+                
+                Console.WriteLine("1: Login");
+                Console.WriteLine("2: Register");
+                string response = Console.ReadLine().ToUpper();
+                Console.Clear();
+                
+                switch (response) {
+                    case "1":
+                    case "LOGIN":
+                    case "L":
+                        try
+                        {
+                            loggedUser = await UserLoginImpl.Login();
+                        }
+                        catch (InvalidPasswordException e)
+                        {
+                            Console.WriteLine(e.Message);
 
-            // */
+                            Environment.Exit(1);
+                        }
+                        catch (UserDoesNotExistException e)
+                        {
+                            Console.WriteLine(e.Message);
 
-            await BarChartGenerator.generate();
+                            break;
+                        }
+                        flag = false;
+                        break;
+                    case "2":
+                    case "REGISTER":
+                    case "R":
+                        UserRegisterImpl.StartRegister();
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Something went wrong. Try again");
+                        break;
+                }
+                    
+            } while (flag);
 
-            //User loggedUser = null;
+            flag = true;
+
+            Console.Clear();
+            Console.WriteLine($"Welcome {loggedUser.userName.ToLowerInvariant()} \n");
+
+
+
+            //await BarChartGenerator.generate();
+            //bool flag = true;
+            //do
+            //{
+            //    User loggedUser = null;
+
             //try
             //{
             //    loggedUser = await UserLoginImpl.Login();
@@ -42,32 +94,12 @@ namespace LibraryProject
 
             //    Environment.Exit(1);
             //}
-            //catch (UserDoesNotExistException e) { 
+            //catch (UserDoesNotExistException e)
+            //{
             //    Console.WriteLine(e.Message);
 
             //    Environment.Exit(1);
             //}
-            //bool flag = true;
-            //do
-            //{
-                //    User loggedUser = null;
-            
-                //try
-                //{
-                //    loggedUser = await UserLoginImpl.Login();
-                //}
-                //catch (InvalidPasswordException e)
-                //{
-                //    Console.WriteLine(e.Message);
-
-                //    Environment.Exit(1);
-                //}
-                //catch (UserDoesNotExistException e)
-                //{
-                //    Console.WriteLine(e.Message);
-
-                //    Environment.Exit(1);
-                //}
 
             //    Console.WriteLine("1. remove 2. add");
             //    int input = int.Parse(Console.ReadLine());
@@ -87,7 +119,7 @@ namespace LibraryProject
             //        }
             //    }
 
-                
+
 
 
 
