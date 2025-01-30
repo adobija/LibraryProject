@@ -48,7 +48,8 @@ namespace LibraryProject.libraries
                 }
                 catch (UserAlreadyExistException e)
                 {
-                    Console.Write($"{e.Message} Please input not used username \n");
+                    Console.Write($"{e.Message} Try again... \n");
+                    Console.WriteLine("Input your original username");
                     validUserName = Console.ReadLine();
                 }
             } while (flag);
