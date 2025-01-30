@@ -18,11 +18,11 @@ namespace LibraryProject.interfaces.implementations
 
         public async void RegisterUser(string userName, string password)
         {
-
+            
             List<User> listOfExistingUsers = await UserController.FetchUsers();
 
             //Console.WriteLine($"Number of users fetched: {listOfExistingUsers.Count}");
-
+            
             string validUsername = UsernameValidator.validateUsername(listOfExistingUsers, userName);
             
 
@@ -54,17 +54,37 @@ namespace LibraryProject.interfaces.implementations
         {
             UserController userController = new UserController();
 
-            Console.WriteLine("Create your account!");
-            Console.WriteLine("Insert username");
-            string username = Console.ReadLine();
-            Console.WriteLine("Insert password");
-            string password = Console.ReadLine();
+            Console.WriteLine("Create your username:");
+            string userName = Console.ReadLine();
 
-            userController.RegisterUser(username, password);
+            bool flag = true;
+            string password;
+            do
+            {
+                Console.WriteLine("Create your password:");
+                password = Console.ReadLine();
+
+                Console.WriteLine("Repeat your password:");
+                string secondPassword = Console.ReadLine();
+
+                if (password.Equals(secondPassword))
+                {
+                    flag = false;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Passwords doesn't match. Try again");
+                    continue;
+                }
+            } while (flag);
+
+            userController.RegisterUser(userName, password);
         }
 
         public void Success()
         {
+            Console.Clear();
             Console.WriteLine("Successfully registered!");
         }
 

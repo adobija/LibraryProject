@@ -13,10 +13,7 @@ namespace LibraryProject.interfaces.implementations
     {
         public static async Task<User> Login()
         {
-            //pobierz wszystkich uzytkownikow z bazy
-            //przetestuj podany login
-            //zapytaj o haslo
-            //sprawdz czy haslo zgadza się z haslem podanym do loginu
+            Console.Clear();
             Console.WriteLine("Input your username");
             string username = Console.ReadLine().ToUpper();
 
@@ -42,7 +39,6 @@ namespace LibraryProject.interfaces.implementations
 
                 if (BCrypt.Net.BCrypt.Verify(inputPassword, foundUser.getPassword()))
                 {
-                    Console.WriteLine($"Welcome {foundUser.getUserName()}");
                     return foundUser;
                 }
                 else {
