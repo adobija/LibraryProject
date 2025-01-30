@@ -26,6 +26,34 @@ namespace LibraryProject.libraries
             {
                 return new RomanceNovelBook();
             }
+            else if (type.Equals("ADVENTURE"))
+            {
+                return new AdventureBook();
+            }
+            else if (type.Equals("BIOGRAPHY"))
+            {
+                return new BiographyBook();
+            }
+            else if (type.Equals("DYSTOPIAN"))
+            {
+                return new DystopianBook();
+            }
+            else if (type.Equals("HISTORY"))
+            {
+                return new HistoryBook();
+            }
+            else if (type.Equals("HORROR"))
+            {
+                return new HorrorBook();
+            }
+            else if (type.Equals("PSYCHOLOGY"))
+            {
+                return new PsychologyBook();
+            }
+            else if (type.Equals("SCIENCE"))
+            {
+                return new ScienceBook();
+            }
             else
             {
                 throw new NotImplementedException($"{type} category does not exist!");
