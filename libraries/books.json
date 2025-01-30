@@ -1,26 +1,162 @@
 [
-  {
-    "Title": "Wladca Pierscieni",
-    "Author": "J.R.R. Tolkien",
-    "ISBN": 9788390021010,
-    "IsAvailable": true,
-    "Category": "Fantasy",
-    "borrowCount": 5
-  },
-  {
-    "Title": "Sherlock Holmes",
-    "Author": "John Watson",
-    "ISBN": 3249479374014,
-    "IsAvailable": true,
-    "Category": "Mystery",
-    "borrowCount": 10
-  },
-  {
-    "Title": "Wiedzmin",
-    "Author": "Andrzej Sapkowski",
-    "ISBN": 1234567890345,
-    "IsAvailable": true,
-    "Category": "Fantasy",
-    "borrowCount": 8
-  }
+    {
+        "Title": "Into the Wild",
+        "Author": "Jon Krakauer",
+        "ISBN": 9780385486804,
+        "IsAvailable": true,
+        "Category": "Adventure",
+        "borrowCount": 3
+    },
+    {
+        "Title": "The Hobbit",
+        "Author": "J.R.R. Tolkien",
+        "ISBN": 9780345339683,
+        "IsAvailable": true,
+        "Category": "Fantasy",
+        "borrowCount": 3
+    },
+    {
+        "Title": "The Da Vinci Code",
+        "Author": "Dan Brown",
+        "ISBN": 9780385504201,
+        "IsAvailable": true,
+        "Category": "Mystery",
+        "borrowCount": 6
+    },
+    {
+        "Title": "A Brief History of Time",
+        "Author": "Stephen Hawking",
+        "ISBN": 9780553380163,
+        "IsAvailable": true,
+        "Category": "Science",
+        "borrowCount": 2
+    },
+    {
+        "Title": "The Diary of a Young Girl",
+        "Author": "Anne Frank",
+        "ISBN": 9780553296983,
+        "IsAvailable": true,
+        "Category": "Biography",
+        "borrowCount": 3
+    },
+    {
+        "Title": "Sapiens: A Brief History of Humankind",
+        "Author": "Yuval Noah Harari",
+        "ISBN": 9780062316097,
+        "IsAvailable": true,
+        "Category": "History",
+        "borrowCount": 6
+    },
+    {
+        "Title": "Thinking, Fast and Slow",
+        "Author": "Daniel Kahneman",
+        "ISBN": 9780374533557,
+        "IsAvailable": true,
+        "Category": "Psychology",
+        "borrowCount": 5
+    },
+    {
+        "Title": "1984",
+        "Author": "George Orwell",
+        "ISBN": 9780451524935,
+        "IsAvailable": true,
+        "Category": "Dystopian",
+        "borrowCount": 3
+    },
+    {
+        "Title": "Dracula",
+        "Author": "Bram Stoker",
+        "ISBN": 9780486411095,
+        "IsAvailable": true,
+        "Category": "Horror",
+        "borrowCount": 8
+    },
+    {
+        "Title": "Pride and Prejudice",
+        "Author": "Jane Austen",
+        "ISBN": 9781503290563,
+        "IsAvailable": true,
+        "Category": "Romance",
+        "borrowCount": 6
+    },
+    {
+        "Title": "The Call of the Wild",
+        "Author": "Jack London",
+        "ISBN": 9781853262718,
+        "IsAvailable": true,
+        "Category": "Adventure",
+        "borrowCount": 1
+    },
+    {
+        "Title": "The Name of the Wind",
+        "Author": "Patrick Rothfuss",
+        "ISBN": 9780756404741,
+        "IsAvailable": true,
+        "Category": "Fantasy",
+        "borrowCount": 3
+    },
+    {
+        "Title": "Gone Girl",
+        "Author": "Gillian Flynn",
+        "ISBN": 9780307588371,
+        "IsAvailable": true,
+        "Category": "Mystery",
+        "borrowCount": 1
+    },
+    {
+        "Title": "Cosmos",
+        "Author": "Carl Sagan",
+        "ISBN": 9780345331359,
+        "IsAvailable": true,
+        "Category": "Science",
+        "borrowCount": 7
+    },
+    {
+        "Title": "The Glass Castle",
+        "Author": "Jeannette Walls",
+        "ISBN": 9780743247542,
+        "IsAvailable": true,
+        "Category": "Biography",
+        "borrowCount": 2
+    },
+    {
+        "Title": "The History of the Ancient World",
+        "Author": "Susan Wise Bauer",
+        "ISBN": 9780393059748,
+        "IsAvailable": true,
+        "Category": "History",
+        "borrowCount": 3
+    },
+    {
+        "Title": "The Power of Habit",
+        "Author": "Charles Duhigg",
+        "ISBN": 9781400069286,
+        "IsAvailable": true,
+        "Category": "Psychology",
+        "borrowCount": 6
+    },
+    {
+        "Title": "Brave New World",
+        "Author": "Aldous Huxley",
+        "ISBN": 9780060850524,
+        "IsAvailable": true,
+        "Category": "Dystopian",
+        "borrowCount": 10
+    },
+    {
+        "Title": "The Shining",
+        "Author": "Stephen King",
+        "ISBN": 9780307743657,
+        "IsAvailable": true,
+        "Category": "Horror",
+        "borrowCount": 8
+    },
+    {
+        "Title": "The Fault in Our Stars",
+        "Author": "John Green",
+        "ISBN": 9780525478812,
+        "IsAvailable": true,
+        "Category": "Romance",
+        "borrowCount": 2
+    }
 ]
