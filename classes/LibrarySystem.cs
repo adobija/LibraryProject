@@ -65,7 +65,7 @@ public class LibrarySystem
 
         List<DataBaseBook> books = await LoadBooksAsync();
 
-        Console.WriteLine("Insert category of book (Fantasy/Romance/Mystery)");
+        Console.WriteLine("Insert category of book (Adventure/Fantasy/Mystery/Science/Biography/History/Psychology/Dystopian/Horror/Romance)");
         string category = Console.ReadLine().ToUpper();
         BookAbstract newBook;
         try
