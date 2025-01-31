@@ -3,24 +3,37 @@
     "userName": "ADMIN",
     "password": "$2a$10$j4k3WwDDZGHDGUmxa3uXL..Apx59J9B52jOCBWSN4LR6Xyvmxblka",
     "userId": 0,
-    "borrowedBooks": []
+    "BorrowedBooks": [
+      {
+        "BookId": 9780385486804,
+        "BorrowDate": "2025-01-31T21:26:34.9383852+01:00"
+      },
+      {
+        "BookId": 9780345339683,
+        "BorrowDate": "2025-01-31T21:27:11.8945622+01:00"
+      },
+      {
+        "BookId": 9781853262718,
+        "BorrowDate": "2025-01-31T21:30:34.2281329+01:00"
+      }
+    ]
   },
   {
     "userName": "OLEK",
     "password": "$2a$10$ZOdLdAX3kGhEgzev4aLpIOVJ7YNztl/Wq8zZUe9W/i5bOnxY0Jr5e",
     "userId": 1,
-    "borrowedBooks": []
+    "BorrowedBooks": []
   },
   {
     "userName": "PAWEL",
     "password": "$2a$10$hJhuXLu19DUfX5fnDVTJuenN3Cu61WknlZFJHUPSj.0iBX6ggAD2m",
     "userId": 2,
-    "borrowedBooks": []
+    "BorrowedBooks": []
   },
   {
     "userName": "ZUZA",
     "password": "$2a$10$FOPl0n3Bo926kelGmYylFu0RttiQKYt7XLJJav.z3Pi0oA/6t5FNu",
     "userId": 4,
-    "borrowedBooks": []
-  },
+    "BorrowedBooks": []
+  }
 ]
