@@ -31,6 +31,7 @@ Wymagania dotyczące projektu<br>
   <del>Generowanie statystyk - Bitmap</del><br>
  <del>wypozyczac,</del><br>
  <del>zwracac,</del><br>
+  <del>Panel wypozyczen</del><br>
  wyswietlanie dni ile ksiazka jest wypozyczona *później*<br>
 <br>
 
