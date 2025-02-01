@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -73,6 +74,16 @@ public class BarChartGenerator
                 x += barWidth + spacing; // Zwiększ współrzędną x dla kolejnego słupka
             }
 
+            string filePath = $"..\\..\\..\\images\\iloscWypozyczenWKategorii{books[0].Category}.bmp";
+
+            // Sprawdzenie, czy plik istnieje – jeśli tak, to go usuń
+            if (File.Exists(filePath))
+            {
+                Console.WriteLine($"Plik o nazwie iloscWypozyczenWKategorii{books[0].Category}.bmp już istnieje.");
+                Console.WriteLine("Usuwanie istniejącego pliku...");
+                File.Delete(filePath);
+            }
+
             bmp.Save($"..\\..\\..\\images\\iloscWypozyczenWKategorii{books[0].Category}.bmp"); // Zapisz plik BMP
         }
     }
@@ -81,8 +92,34 @@ public class BarChartGenerator
     {
         // Wczytaj listę książek
         List<DataBaseBook> books = await LibrarySystem.LoadBooksAsync();
+        List<DataBaseBook> filteredBooks = new List<DataBaseBook>();
+        var categories = books.Select(b => b.Category).Distinct().ToList();
+        Console.Clear();
+        Console.WriteLine("Wybierz kategorię książek do wygenerowania wykresu słupkowego:");
+        for (int i = 0; i < categories.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {categories[i]}");
+        }
+
+        Console.WriteLine("\nPodaj numer kategorii: ");
+        if (int.TryParse(Console.ReadLine(), out int categoryChoice) &&
+            categoryChoice > 0 && categoryChoice <= categories.Count)
+        {
+            string selectedCategory = categories[categoryChoice - 1];
+            filteredBooks = books.Where(b => b.Category == selectedCategory).ToList();
+        }
+        Console.Clear();
+        Console.WriteLine("Generowanie bitmapy...");
         // Utwórz wykres
-        CreateBarChart(books);
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
+        CreateBarChart(filteredBooks);
+        stopWatch.Stop();
+        TimeSpan ts = stopWatch.Elapsed;
+        string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts.Hours, ts.Minutes, ts.Seconds,
+            ts.Milliseconds / 10);
+        Console.WriteLine($"Wygenerowano plik bitmapy w ciągu {elapsedTime}");
     }
 
 }
