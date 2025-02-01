@@ -40,14 +40,6 @@
     "borrowCount": 3
   },
   {
-    "Title": "Sapiens: A Brief History of Humankind",
-    "Author": "Yuval Noah Harari",
-    "ISBN": 9780062316097,
-    "IsAvailable": true,
-    "Category": "History",
-    "borrowCount": 6
-  },
-  {
     "Title": "Thinking, Fast and Slow",
     "Author": "Daniel Kahneman",
     "ISBN": 9780374533557,
@@ -120,14 +112,6 @@
     "borrowCount": 2
   },
   {
-    "Title": "The History of the Ancient World",
-    "Author": "Susan Wise Bauer",
-    "ISBN": 9780393059748,
-    "IsAvailable": true,
-    "Category": "History",
-    "borrowCount": 3
-  },
-  {
     "Title": "The Power of Habit",
     "Author": "Charles Duhigg",
     "ISBN": 9781400069286,
@@ -158,5 +142,21 @@
     "IsAvailable": true,
     "Category": "Romance",
     "borrowCount": 2
+  },
+  {
+    "Title": "Czarownice",
+    "Author": "Bedoes2115",
+    "ISBN": 5252867801213,
+    "IsAvailable": true,
+    "Category": "Fantasy",
+    "borrowCount": 0
+  },
+  {
+    "Title": "Mein Kampf",
+    "Author": "Adolf Hitler",
+    "ISBN": 9780712652544,
+    "IsAvailable": true,
+    "Category": "History",
+    "borrowCount": 0
   }
 ]
