@@ -79,18 +79,22 @@ public static class LibraryActions
             Console.WriteLine($"{i + 1}. {categories[i]}");
         }
 
-        Console.Write("Podaj numer kategorii: ");
+        Console.WriteLine("Podaj numer kategorii: ");
         if (int.TryParse(Console.ReadLine(), out int categoryChoice) &&
             categoryChoice > 0 && categoryChoice <= categories.Count)
         {
             string selectedCategory = categories[categoryChoice - 1];
             var filteredBooks = books.Where(b => b.Category == selectedCategory).ToList();
 
-            Console.WriteLine($"Książki w kategorii: {selectedCategory}");
+            Console.Clear();
+            Console.WriteLine($"\n ==========================================  Kategoria: {filteredBooks[0].Category} ==========================================");
+            Console.WriteLine(new string('-', 50));
+
             foreach (var book in filteredBooks)
             {
-                string availability = book.IsAvailable ? "Dostępna" : "Wypożyczona";
-                Console.WriteLine($"ID: {book.ISBN}, Tytuł: {book.Title}, Autor: {book.Author}, Dostępność: {availability}");
+
+                book.printPrettyDetailsWithoutBorrowDate();
+                
             }
         }
         else
@@ -106,7 +110,7 @@ public static class LibraryActions
     {
         var books = await LibrarySystem.LoadBooksAsync();
         var categories = books.Select(b => b.Category).Distinct().ToList();
-
+        Console.Clear();
         Console.WriteLine("Wybierz kategorię książek:");
         for (int i = 0; i < categories.Count; i++)
         {
@@ -124,10 +128,12 @@ public static class LibraryActions
 
             if (availableBooks.Any())
             {
-                Console.WriteLine($"Dostępne książki w kategorii: {selectedCategory}");
+                //Console.WriteLine($"Dostępne książki w kategorii: {selectedCategory}");
+                Console.WriteLine($"\n ==========================================  Kategoria: {selectedCategory} ==========================================");
+                Console.WriteLine(new string('-', 50));
                 foreach (var book in availableBooks)
                 {
-                    Console.WriteLine($"Tytuł: {book.Title}, Autor: {book.Author}");
+                    book.printPrettyDetailsWithoutBorrowDate();
                 }
 
                 string title = "";
@@ -166,6 +172,7 @@ public static class LibraryActions
                         // Zapisz zmiany w użytkownikach
                         await UserController.SaveUpdatedUser(loggedUser);
 
+                        Console.Clear();
                         Console.WriteLine($"Książka '{bookToBorrow.Title}' została wypożyczona.");
 
                         break;
@@ -196,7 +203,7 @@ public static class LibraryActions
 
         // Pobierz unikalne kategorie książek
         var categories = books.Select(b => b.Category).Distinct().ToList();
-
+        Console.Clear();
         Console.WriteLine("Wybierz kategorię książek:");
         for (int i = 0; i < categories.Count; i++)
         {
@@ -213,11 +220,17 @@ public static class LibraryActions
             var borrowedBooks = books
                 .Where(b => b.Category == selectedCategory && !b.IsAvailable)
                 .ToList();
-
+            Console.Clear();
             if (borrowedBooks.Any())
             {
-                Console.WriteLine($"Wypożyczone książki w kategorii: {selectedCategory}");
-                ListPrint.printList(borrowedBooks);
+                
+                Console.WriteLine($"\n ==========================================  Kategoria: {selectedCategory} ==========================================");
+                Console.WriteLine(new string('-', 50));
+
+                foreach (DataBaseBook book in borrowedBooks) {
+                    book.printPrettyDetailsWithBorrowDate(loggedUser);
+
+                }
 
                 string title = "";
                 string author = "";
@@ -268,6 +281,7 @@ public static class LibraryActions
                         // Zapisz zmiany w użytkownikach
                         await UserController.SaveUpdatedUser(loggedUser);
 
+                        Console.Clear();
                         Console.WriteLine($"Książka '{bookToReturn.Title}' została zwrócona i jest teraz dostępna do wypożyczenia.");
                         break;
                     }
@@ -324,6 +338,7 @@ public static class LibraryActions
                 .ToDictionary(group => group.Key, group => group.ToList());
 
             // Wyświetlenie panelu
+            Console.Clear();
             Console.WriteLine($"\n Panel wypożyczeń dla użytkownika: {loggedUser.userName}");
             Console.WriteLine(new string('-', 50));
 
@@ -334,11 +349,8 @@ public static class LibraryActions
 
                 foreach (var book in category.Value)
                 {
-                    Console.WriteLine($" Tytuł: {book.Title} ");
-                    Console.WriteLine($" Autor: {book.Author}");
-                    Console.WriteLine($" ISBN: {book.ISBN}");
-                    Console.WriteLine($" Data wypożyczenia: {loggedUser.BorrowedBooks.First(b => b.BookId == book.ISBN).BorrowDate:dd-MM-yyyy}");
-                    Console.WriteLine(new string('-', 50));
+                    book.printPrettyDetailsWithBorrowDate(loggedUser);
+                    
                 }
             }
         }
