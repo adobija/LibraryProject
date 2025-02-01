@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using LibraryProject.interfaces.implementations;
 using LibraryProject.exceptions;
+using LibraryProject.libraries;
 
 
 namespace LibraryProject
@@ -75,53 +76,12 @@ namespace LibraryProject
 
             flag = true;
 
-            bool exit = false;
-            Console.Clear(); // Czyszczenie ekranu
-            Console.WriteLine("Witaj w systemie biblioteki!");
-            Console.WriteLine($"\nZalogowany użytkownik: {loggedUser.userName}");
-            while (!exit)
+            if (loggedUser.userName.Equals("ADMIN") && loggedUser.userId == 0)
             {
-                Console.WriteLine("\nWybierz akcję:");
-                Console.WriteLine("1. Przeglądaj książki");
-                Console.WriteLine("2. Wypożycz książkę");
-                Console.WriteLine("3. Zwróć książkę");
-                Console.WriteLine("4. Wyświetl panel wypożyczeń");
-                Console.WriteLine("5. Wygeneruj wykres statystyk dotyczące wypożyczeń");
-                Console.WriteLine("6. Wyjdź");
-
-                Console.Write("Twój wybór: ");
-                string choice = Console.ReadLine();
-
-                switch (choice)
-                {
-                    case "1":
-                        Console.Clear();
-                        await LibraryActions.BrowseBooksAsync();
-                        break;
-
-
-                    case "2":
-                        await LibraryActions.BorrowBookAsync(loggedUser);
-                        break;
-                    //e69b14d4f33fe7e9ac1a35ef4f87df635d7073f0
-
-                    case "3":
-
-                        await LibraryActions.ReturnBookAsync(loggedUser);
-                        break;
-
-                    case "4":
-                        await LibraryActions.DisplayBorrowedBooksPanelAsync(loggedUser);
-                        break;
-                    case "5":
-                        await BarChartGenerator.generate();
-                        break;
-
-                    default:
-                        Environment.Exit(0);
-                        exit = true;
-                        break;
-                }
+                await Menu.MenuForAdminAsync(loggedUser);
+            }
+            else { 
+                await Menu.MenuForUserAsync(loggedUser);
             }
         }
     }
