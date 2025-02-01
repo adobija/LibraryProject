@@ -64,7 +64,7 @@ public class LibrarySystem
         }
 
         List<DataBaseBook> books = await LoadBooksAsync();
-
+        Console.Clear();
         Console.WriteLine("Insert category of book (Adventure/Fantasy/Mystery/Science/Biography/History/Psychology/Dystopian/Horror/Romance)");
         string category = Console.ReadLine().ToUpper();
         BookAbstract newBook;
@@ -132,6 +132,7 @@ public class LibrarySystem
         books.Add(refactoredBook);
 
         SaveBooksAsync(books);
+        Console.Clear();
         Console.Write($"Successfully added ");
         newBook.printDetailsOfBook();
         Console.WriteLine();
@@ -179,6 +180,7 @@ public class LibrarySystem
             if (consent.Equals("YES") || consent.Equals("Y"))
             {
                 books.RemoveAt(input);
+                Console.Clear();
                 Console.Write($"Successfully removed ");
                 bookToRemove.printDetailsOfBook();
                 Console.WriteLine();
