@@ -3,9 +3,9 @@
     "Title": "Into the Wild",
     "Author": "Jon Krakauer",
     "ISBN": 9780385486804,
-    "IsAvailable": false,
+    "IsAvailable": true,
     "Category": "Adventure",
-    "borrowCount": 5
+    "borrowCount": 6
   },
   {
     "Title": "The Hobbit",
@@ -67,9 +67,9 @@
     "Title": "Dracula",
     "Author": "Bram Stoker",
     "ISBN": 9780486411095,
-    "IsAvailable": true,
+    "IsAvailable": false,
     "Category": "Horror",
-    "borrowCount": 8
+    "borrowCount": 9
   },
   {
     "Title": "Pride and Prejudice",
@@ -83,7 +83,7 @@
     "Title": "The Call of the Wild",
     "Author": "Jack London",
     "ISBN": 9781853262718,
-    "IsAvailable": false,
+    "IsAvailable": true,
     "Category": "Adventure",
     "borrowCount": 2
   },
@@ -109,7 +109,7 @@
     "ISBN": 9780345331359,
     "IsAvailable": true,
     "Category": "Science",
-    "borrowCount": 7
+    "borrowCount": 8
   },
   {
     "Title": "The Glass Castle",
@@ -149,7 +149,7 @@
     "ISBN": 9780307743657,
     "IsAvailable": true,
     "Category": "Horror",
-    "borrowCount": 8
+    "borrowCount": 5
   },
   {
     "Title": "The Fault in Our Stars",
