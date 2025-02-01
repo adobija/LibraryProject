@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryProject.classes;
 using LibraryProject.exceptions;
 using LibraryProject.libraries;
 
@@ -59,6 +60,30 @@ namespace LibraryProject.abstracts
             String output = $"Book {Title} written by {Author} ({refactoredISBN})";
 
             Console.Write(output);
+        }
+
+        public void printPrettyDetailsWithoutBorrowDate()
+        {
+
+            Console.WriteLine($" Tytuł: {this.Title} ");
+            Console.WriteLine($" Autor: {this.Author}");
+            Console.WriteLine($" ISBN: {refactorISBN()}");
+            Console.WriteLine($" Dostępność: {(this.IsAvailable ? "Dostępna" : "Wypożyczona")}");
+            Console.WriteLine($" Ilość wypożyczeń: {this.borrowCount}");
+            Console.WriteLine(new string('-', 50));
+        }
+
+        public void printPrettyDetailsWithBorrowDate(User loggedUser)
+        {
+
+            Console.WriteLine($" Tytuł: {this.Title} ");
+            Console.WriteLine($" Autor: {this.Author}");
+            Console.WriteLine($" ISBN: {refactorISBN()}");
+            Console.WriteLine($" Dostępność: {(this.IsAvailable ? "Dostępna" : "Wypożyczona")}");
+            Console.WriteLine($" Ilość wypożyczeń: {this.borrowCount}");
+            Console.WriteLine($" Data wypożyczenia: {loggedUser.BorrowedBooks.First(b => b.BookId == this.ISBN).BorrowDate:dd-MM-yyyy}");
+            Console.WriteLine(new string('-', 50));
+
         }
 
         private string refactorISBN() { 
