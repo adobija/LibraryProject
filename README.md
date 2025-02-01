@@ -23,7 +23,8 @@ Wymagania dotyczące projektu<br>
  <del>Administrator tworzenie ksiazek, </del><br>
  <del>usuwanie ksiazek,</del> <br>
  <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del><br>
- menu <br>
+ <del>menu</del>
+ <br>
 <br>
  Jakub: <br>
  <del>przegladac ksiazki,</del> <br>
@@ -32,7 +33,7 @@ Wymagania dotyczące projektu<br>
  <del>wypozyczac,</del><br>
  <del>zwracac,</del><br>
   <del>Panel wypozyczen</del><br>
- wyswietlanie dni ile ksiazka jest wypozyczona *później*<br>
+ <del>wyswietlanie kiedy ksiazka została wypozyczona</del><br>
 <br>
 
 - bazy danych ksiazek jako osobny plik JSON, podział na kategorie, 
