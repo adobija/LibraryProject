@@ -14,12 +14,7 @@
     "userName": "OLEK",
     "password": "$2a$10$ZOdLdAX3kGhEgzev4aLpIOVJ7YNztl/Wq8zZUe9W/i5bOnxY0Jr5e",
     "userId": 1,
-    "BorrowedBooks": [
-      {
-        "BookId": 9780385486804,
-        "BorrowDate": "2025-02-01T13:23:31.1835336+01:00"
-      }
-    ]
+    "BorrowedBooks": []
   },
   {
     "userName": "PAWEL",
