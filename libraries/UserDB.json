@@ -3,12 +3,7 @@
     "userName": "ADMIN",
     "password": "$2a$10$j4k3WwDDZGHDGUmxa3uXL..Apx59J9B52jOCBWSN4LR6Xyvmxblka",
     "userId": 0,
-    "BorrowedBooks": [
-      {
-        "BookId": 9781853262718,
-        "BorrowDate": "2025-01-31T21:30:34.2281329+01:00"
-      }
-    ]
+    "BorrowedBooks": []
   },
   {
     "userName": "OLEK",
