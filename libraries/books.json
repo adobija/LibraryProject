@@ -11,7 +11,7 @@
     "Title": "The Hobbit",
     "Author": "J.R.R. Tolkien",
     "ISBN": 9780345339683,
-    "IsAvailable": false,
+    "IsAvailable": true,
     "Category": "Fantasy",
     "borrowCount": 4
   },
@@ -59,7 +59,7 @@
     "Title": "Dracula",
     "Author": "Bram Stoker",
     "ISBN": 9780486411095,
-    "IsAvailable": false,
+    "IsAvailable": true,
     "Category": "Horror",
     "borrowCount": 9
   },
