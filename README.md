@@ -1,5 +1,3 @@
-\bin\Debug\net8.0\*bin files from root folder*
-
 # Library_project
 
 Wymagania dotyczące projektu<br>
