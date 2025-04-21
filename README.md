@@ -22,17 +22,17 @@ Wymagania dotyczące projektu<br>
  Olek: <br>
  <del>Administrator tworzenie ksiazek, </del><br>
  <del>usuwanie ksiazek,</del> <br>
- <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku <del>JSON</del> txt (temporarily) ( login haslo)</del><br>
+ <del>Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku JSON (login haslo szyfrowane)</del><br>
  <del>menu</del>
  <br>
 <br>
  Jakub: <br>
  <del>przegladac ksiazki,</del> <br>
  <del>statystyki ksaizek,</del><br>
-  <del>Generowanie statystyk - Bitmap</del><br>
+ <del>Generowanie statystyk - Bitmap</del><br>
  <del>wypozyczac,</del><br>
  <del>zwracac,</del><br>
-  <del>Panel wypozyczen</del><br>
+ <del>Panel wypozyczen</del><br>
  <del>wyswietlanie kiedy ksiazka została wypozyczona</del><br>
 <br>
 
