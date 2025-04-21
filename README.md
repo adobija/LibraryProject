@@ -36,20 +36,12 @@ Wymagania dotyczące projektu<br>
  <del>wyswietlanie kiedy ksiazka została wypozyczona</del><br>
 <br>
 
-- bazy danych ksiazek jako osobny plik JSON, podział na kategorie, 
+- bazy danych ksiazek jako osobny plik JSON, podział na kategorie,
+- zapis i odczyt danych o ksiazkach oraz użytkownikach przechowywanych w plikach JSON 
 - oparta na wzorcu projektowym Factory
-- Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku txt,1 admin (login haslo)
-- Administrator tworzenie ksiazek, usuwanie ksiazek (-Olek), zarzadzanie userami, statystyki ksiazek [ Zapisuj dane o najczęściej wypożyczanych książkach i prezentuj je za pomocą grafiki bitmapowej (np. wykres kołowy lub słupkowy).  ] , Śledzenie historii wypożyczeń, 
-- user - przegladac ksiazki, statystyki ksaizek, wypozyczac, zwracac, wyswietlanie dni ile ksiazka jest wypozyczona, - JK
-- zapis i odczyt danych o ksiazkach przechowywanych w JSON 
-- 
-
-
-# Update
-
-- Utworzony plik book.json zawierajacy ksiazki
-- Utworzony plik users.json zawierajacy userów
-- w LibraryActions.cs - działa  Przeglądanie książek z podziałem na kategorie (opcja 1)
+- Mozliwosc tworzenia kont uzytkownikow zapisywanych w osobnym pliku
+- Administrator tworzenie ksiazek, usuwanie ksiazek, zarzadzanie userami, statystyki ksiazek [ Zapisuj dane o najczęściej wypożyczanych książkach i prezentuj je za pomocą grafiki bitmapowej (np. wykres kołowy lub słupkowy).  ] 
+- user - przegladac ksiazki, statystyki ksaizek, wypozyczac, zwracac
 
 # Made by Jakub Kruźlak && Aleksander Dobija
 
